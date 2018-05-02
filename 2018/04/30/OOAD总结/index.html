@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="叶">
 <meta property="og:description" content="先简要的了解一下什么是面向对象：把一切都看成是对象。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-02T12:41:45.303Z">
+<meta property="og:updated_time" content="2018-05-02T15:34:14.885Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OOAD总结">
 <meta name="twitter:description" content="先简要的了解一下什么是面向对象：把一切都看成是对象。">
@@ -261,7 +261,7 @@
 <p> <strong>对象的审查和筛选</strong></p>
 <ul>
 <li>舍弃无用对象：1.通过<strong>属性</strong>判断；2.通过<strong>操作</strong>判断。  </li>
-<li>进件对象：只有<strong>一个</strong>属性或操作的对象。 </li>
+<li>精简对象：只有<strong>一个</strong>属性或操作的对象。 </li>
 <li>推迟到<strong>OOD</strong>考虑的对象。<br><strong>抽象出类并进行调整</strong><br><strong>主动对象及主动行为：</strong></li>
 <li>主动对象：具有<strong>主动行为</strong>的对象，在设计阶段是拥有线程或进程并启动<strong>控制活动</strong>的对象  。</li>
 <li><p>主动类：是其实例为主动对象的类。    </p>
@@ -269,9 +269,28 @@
 </li>
 </ul>
 <h4 id="属性和操作"><a href="#属性和操作" class="headerlink" title="属性和操作"></a>属性和操作</h4><ol>
-<li>属性： 描述对象性质的<strong>数据项</strong>。<br>格式： [可见性] 属性名[：类型] [=初始值]    </li>
-<li>操作： 类的对象被要求提供的<strong>服务的规约</strong>。<br>格式：[可见性] 操作名 [ (参数列表) ] [：返回类型]</li>
+<li>属性： 描述对象性质的<strong>数据项</strong>。   （实例属性， 类属性）<br>格式： [可见性] 属性名[：类型] [=初始值]    </li>
+<li>操作： 类的对象被要求提供的<strong>服务的规约</strong>。<br>格式：[可见性] 操作名 [ (参数列表) ] [：返回类型] （实例操作，类操作）<br>系统行为， 对象行为（算法简单，算法复杂）。  <blockquote>
+<p>对象的审查：是否有用，是否高内聚。 </p>
+</blockquote>
+</li>
 </ol>
+<h4 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h4><ol>
+<li><strong>继承:</strong>   <ul>
+<li>类A的全部对象都是类B的对象，且类B中存在不属于类A的对象，则A是B的特殊类，B是A的一般类，A与B之间的关系叫继承。</li>
+<li>类A具有类B的特征，且还具有自己的一些特征，则A叫做B的特殊类，B是A的一般类，A与B之间的关系叫继承。  </li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>非对称性<br>传递性</p>
+</blockquote>
+<blockquote>
+<p>多继承<br>单继承  </p>
+</blockquote>
+<blockquote>
+<p>表示法</p>
+</blockquote>
 
       
 
