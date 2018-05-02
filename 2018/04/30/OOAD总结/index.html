@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="叶">
 <meta property="og:description" content="先简要的了解一下什么是面向对象：把一切都看成是对象。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-01T05:52:23.292Z">
+<meta property="og:updated_time" content="2018-05-02T12:31:51.258Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OOAD总结">
 <meta name="twitter:description" content="先简要的了解一下什么是面向对象：把一切都看成是对象。">
@@ -245,23 +245,26 @@
 <hr>
 <hr>
 <h2 id="图"><a href="#图" class="headerlink" title="图"></a>图</h2><h3 id="用况图"><a href="#用况图" class="headerlink" title="用况图"></a>用况图</h3><p> <strong>系统边界：</strong>系统边界是一个系统所包含的所有系统成分与系统以外的事物的分界线。<br> <strong>参与者：</strong>一组在功能上密切相关的角色，当一个事物与系统交互时，该事物要扮演这样的角色。 <strong>参与者不是系统的一部分，他们位于系统之外，是在系统之外的与系统交互的任何事物。</strong></p>
-<pre><code>*识别参与者*：
-1. **人员**：直接使用系统的人员中发现参与者。
-2. **外部系统**：所有与本系统交互的外部系统都是参与者。
-3. **设备**：与系统相连，像系统提供外界信息；也可能系统向设备提供信息，设备在系统的控制下运行（不包括监视器，键盘，鼠标这样的标准用户接口设别）。    
-</code></pre><p> <strong>用况：</strong>一个用况是描述系统的一项功能的一组动作序列，这样的动作序列表示参与者与系统的交互，系统执行该动作序列<strong>要为参与者产生结果</strong>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>注意：</strong><br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. 用况是一种<strong>类型</strong>，它是要被<strong>实例化执行</strong>的。<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. 用况描述中的一个动作应该<strong>描述参与者</strong>或<strong>系统要完成的一个交互步骤</strong>。<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. 执行用况的一个动作序列要为参与者<strong>产生可观察的结果</strong>。<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. 保证用况所对应的<strong>功能完整</strong>，用况不分层，不能说上层的用况是由下层较小的用况组成。<br>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. 用况<strong>不说明</strong>具体<strong>细节</strong>。  </p>
+<p><em>识别参与者</em>：</p>
+<ol>
+<li><strong>人员</strong>：直接使用系统的人员中发现参与者。</li>
+<li><strong>外部系统</strong>：所有与本系统交互的外部系统都是参与者。</li>
+<li><strong>设备</strong>：与系统相连，像系统提供外界信息；也可能系统向设备提供信息，设备在系统的控制下运行（不包括监视器，键盘，鼠标这样的标准用户接口设别）。<br><strong>用况：</strong>一个用况是描述系统的一项功能的一组动作序列，这样的动作序列表示参与者与系统的交互，系统执行该动作序列<strong>要为参与者产生结果</strong>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>注意：</strong><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. 用况是一种<strong>类型</strong>，它是要被<strong>实例化执行</strong>的。<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. 用况描述中的一个动作应该<strong>描述参与者</strong>或<strong>系统要完成的一个交互步骤</strong>。<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. 执行用况的一个动作序列要为参与者<strong>产生可观察的结果</strong>。<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. 保证用况所对应的<strong>功能完整</strong>，用况不分层，不能说上层的用况是由下层较小的用况组成。<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. 用况<strong>不说明</strong>具体<strong>细节</strong>。  </li>
+</ol>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>关系：</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;与参与者之间：<strong>关联</strong> 是参与者与用况的唯一关系。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用况间的关系：<strong>包含</strong>， <strong>扩展</strong>，<strong>继承</strong>。  </p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>捕获用况：</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. 从<strong>参与者</strong>的角度。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. 从<strong>系统功能</strong>的角度。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. 利用<strong>场景</strong>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>用况模板</strong><br> <strong>用况图</strong><br>  定义： 是由<strong>参与者</strong>，<strong>用况</strong>以及这些元素之间的的<strong>关系</strong>组成的图。<br>  检查与调整：<br>  每个<strong>参与者至少与一个用况相关联</strong>。<br>  参与者之间可以有<strong>继承</strong>关系<br>  不能按照人机界面建立用况，<strong>界面不是用况，用况也不是界面</strong>。  </p>
 <hr>
 <h3 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h3><p> 类图描述了系统中各类对象以及他们之间的各种关系。  </p>
 <h4 id="概念与表示法"><a href="#概念与表示法" class="headerlink" title="概念与表示法"></a>概念与表示法</h4><p> <strong>对象：</strong> 是具有明确的语义边界并封装了状态和行为的实体，由一组属性和作用在这组属性上的一组操作构成，他是构成软件系统的<strong>基本单位</strong>。<br> <strong>类：</strong>是具有<strong>相同属性</strong>和<strong>操作</strong>的一组对象的统一抽象描述，对象是类的实例。<br> <strong>对象的审查和筛选</strong>  </p>
-<pre><code>- 舍弃无用对象：1.通过**属性**判断；2.通过**操作**判断。  
-- 进件对象：只有**一个**属性或操作的对象。 
-- 推迟到**OOD**考虑的对象。     
-</code></pre><p> <strong>抽象出类并进行调整</strong><br> <strong>主动对象及主动行为：</strong></p>
-<pre><code>- 主动对象：具有**主动行为**的对象，在设计阶段是拥有线程或进程并启动**控制活动**的对象  。
-- 主动类：是其实例为主动对象的类。    
-</code></pre><p> <strong>建立类的对象层</strong> </p>
+<ul>
+<li>舍弃无用对象：1.通过<strong>属性</strong>判断；2.通过<strong>操作</strong>判断。  </li>
+<li>进件对象：只有<strong>一个</strong>属性或操作的对象。 </li>
+<li>推迟到<strong>OOD</strong>考虑的对象。<br><strong>抽象出类并进行调整</strong><br><strong>主动对象及主动行为：</strong></li>
+<li>主动对象：具有<strong>主动行为</strong>的对象，在设计阶段是拥有线程或进程并启动<strong>控制活动</strong>的对象  。</li>
+<li><p>主动类：是其实例为主动对象的类。    </p>
+<p><strong>建立类的对象层</strong> </p>
+</li>
+</ul>
 <h4 id="属性和操作"><a href="#属性和操作" class="headerlink" title="属性和操作"></a>属性和操作</h4><ol>
 <li>属性： 描述对象性质的<strong>数据项</strong>。<br>格式： [可见性] 属性名[：类型] [=初始值]    </li>
 <li>操作： 类的对象被要求提供的<strong>服务的规约</strong>。<br>格式：[可见性] 操作名 [ (参数列表) ] [：返回类型]</li>
