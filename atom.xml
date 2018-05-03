@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-02T16:37:46.767Z</updated>
+  <updated>2018-05-03T15:19:19.532Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>linux进程</title>
+    <link href="http://yoursite.com/2018/05/03/linux%E8%BF%9B%E7%A8%8B/"/>
+    <id>http://yoursite.com/2018/05/03/linux进程/</id>
+    <published>2018-05-03T14:11:26.000Z</published>
+    <updated>2018-05-03T15:19:19.532Z</updated>
+    
+    <content type="html"><![CDATA[<p>嗯 在进程这一块的Linux，我总觉得很难，故写个总结，来加深我的理解。<br><strong>Linux下c语言编程实现</strong><br><a id="more"></a></p><p>首先：<br>什么是进程：正在执行的程序。<br>Linux 是多任务操作系统，允许多个用户使用计算机系统，多个进程<strong>并发</strong>执行。<br>Linux 环境下启动进程两种途径： <strong>手动</strong>启动和<strong>调度</strong>启动。  </p><p>一些命令：  </p><blockquote><p>ps  查看系统中的进程<br>top  动态显示系统中的进程<br>nice  按用户指定优先级运行<br>renice  改变正在运行进程的优先级<br>kill  中止进程（包括后台进程）<br>crontab  用于安装，删除或者列出用于驱动cron后台任务<br>bg  将挂起的进程放到后台<br>fg  把后台进程放到前台  </p></blockquote><p>现在了解一下<strong>进程控制</strong>吧：<br>Linux环境下创建进程时，系统会分配一个唯一的数值给每个进程，即<strong>进程标识符</strong>。<br><strong>进程号PID</strong>和<strong>父进程号PPID</strong> &nbsp; 获取PID和PPID的系统调用时 <strong>getpid</strong>和<strong>getppid</strong>函数。  </p><p><strong><em>未完待续</em></strong>  </p><p><br><br>了解一下<strong>进程通信</strong>吧：<br>一些通信方式：<br>    信号<br>    管道<br>    命名管道<br>    消息队列<br>    共享存储<br>    信号量<br>    套接字  </p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;嗯 在进程这一块的Linux，我总觉得很难，故写个总结，来加深我的理解。&lt;br&gt;&lt;strong&gt;Linux下c语言编程实现&lt;/strong&gt;&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+    
+      <category term="进程" scheme="http://yoursite.com/tags/%E8%BF%9B%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>OOAD总结</title>
