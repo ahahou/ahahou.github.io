@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-03T17:28:30.285Z</updated>
+  <updated>2018-05-03T17:32:21.465Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://yoursite.com/2018/05/04/JAVA-String%E7%B1%BB/"/>
     <id>http://yoursite.com/2018/05/04/JAVA-String类/</id>
     <published>2018-05-03T16:44:15.000Z</published>
-    <updated>2018-05-03T17:28:30.285Z</updated>
+    <updated>2018-05-03T17:32:21.465Z</updated>
     
-    <content type="html"><![CDATA[<p>在程序设计中经常会设计处理和<strong>字符串</strong>有关的算法，而java中提供了专门用来处理字符序列的<strong>String类</strong>。  </p><p>一下就介绍一下java中的String类。 </p><a id="more"></a><p>String类，位于<strong>java.lang</strong>包中。<br>String类被定义为<strong>final类</strong> ，故不可以有子类。  </p><ol><li>常量对象<br> 用双引号括起来的字符序列。<br> String常量也是<strong>对象</strong><br> 如”你好”，”12”<br> Java把用户程序中的String常量放入<strong>常量池</strong>，常量池中的数据在程序运行期间不能改变。  </li></ol><ol start="2"><li><p>String对象<br> String类声明创建对象。<br> 如：</p><p> String s = new String(“cool”);<br> String t = new String(“cool”);</p><p> <strong>注意</strong><br> s == t 结果是false。<br> s 和 t 是不同的引用，尽管实体相同但是会出现上面的情况。<br> 同时用户是无法输出String对象的引用的。system.out.println(s); 输出的是cool。</p></li><li><p>引用String常量  </p><p> String s1,s2;<br> s1 = “hi”;<br> s2 = “hi”;  </p><p> s1 == s2 返回时true。 实际上时对常量对象的引用，可以这样理解，”hi”本来自己有自己的专属名字，但别人不知道，他也不愿告诉别人，于是就给他起个别名，相当与它的名字，故s1 和 s2都代表它的名字，都指向它之个人。故s1 == s2 是true。</p></li></ol><p>String类的构造  </p><pre><code>String s = new String(&quot;&quot;);String t = new String(String s);String s = new string(char a[]);String s = new string(char a[], int b, ...);</code></pre><p>字符串的并置：  +</p><p>String类的常用方法：  </p><blockquote><p>public int lenth()<br>public boolean equals(String s)<br>public int compareTo(String s)<br>public boolean startsWith(String s)<br>public boolean endsWith(String s)<br>public boolean contains(String s)<br>public int indexOf(String s)   lastIndexOf(String s)<br>public String substring(int startpoint)<br>public String substring(int start, int end)  </p></blockquote>]]></content>
+    <content type="html"><![CDATA[<p>在程序设计中经常会设计处理和<strong>字符串</strong>有关的算法，而java中提供了专门用来处理字符序列的<strong>String类</strong>。  </p><p>一下就介绍一下java中的String类。 </p><a id="more"></a><p>String类，位于<strong>java.lang</strong>包中。<br>String类被定义为<strong>final类</strong> ，故不可以有子类。  </p><ol><li><p>常量对象<br> 用双引号括起来的字符序列。<br> String常量也是<strong>对象</strong><br> 如”你好”，”12”<br> Java把用户程序中的String常量放入<strong>常量池</strong>，常量池中的数据在程序运行期间不能改变。  </p></li><li><p>String对象<br> String类声明创建对象。<br> 如：</p><p> String s = new String(“cool”);<br> String t = new String(“cool”);</p><p> <strong>注意</strong><br> s == t 结果是false。<br> s 和 t 是不同的引用，尽管实体相同但是会出现上面的情况。<br> 同时用户是无法输出String对象的引用的。system.out.println(s); 输出的是cool。</p></li><li><p>引用String常量  </p><p> String s1,s2;<br> s1 = “hi”;<br> s2 = “hi”;  </p><p> s1 == s2 返回时true。 实际上时对常量对象的引用，可以这样理解，”hi”本来自己有自己的专属名字，但别人不知道，他也不愿告诉别人，于是就给他起个别名，相当与它的名字，故s1 和 s2都代表它的名字，都指向它之个人。故s1 == s2 是true。</p></li></ol><p>String类的构造  </p><pre><code>String s = new String(&quot;&quot;);String t = new String(String s);String s = new string(char a[]);String s = new string(char a[], int b, ...);</code></pre><p>字符串的并置：  +</p><p>String类的常用方法：  </p><blockquote><p>public int lenth()<br>public boolean equals(String s)<br>public int compareTo(String s)<br>public boolean startsWith(String s)<br>public boolean endsWith(String s)<br>public boolean contains(String s)<br>public int indexOf(String s)   lastIndexOf(String s)<br>public String substring(int startpoint)<br>public String substring(int start, int end)  </p></blockquote>]]></content>
     
     <summary type="html">
     
