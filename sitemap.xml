@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/05/02/OOAD%E6%80%BB%E7%BB%93/</loc>
+    
+    <lastmod>2018-05-04T16:58:45.969Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/05/04/JAVA-String%E7%B1%BB/</loc>
     
     <lastmod>2018-05-03T17:36:34.242Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://yoursite.com/2018/05/03/linux%E8%BF%9B%E7%A8%8B/</loc>
     
     <lastmod>2018-05-03T15:37:22.779Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/05/02/OOAD%E6%80%BB%E7%BB%93/</loc>
-    
-    <lastmod>2018-05-02T16:37:46.767Z</lastmod>
     
   </url>
   

@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="叶">
 <meta property="og:description" content="先简要的了解一下什么是面向对象：把一切都看成是对象。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-02T16:37:46.767Z">
+<meta property="og:updated_time" content="2018-05-04T16:58:45.969Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OOAD总结">
 <meta name="twitter:description" content="先简要的了解一下什么是面向对象：把一切都看成是对象。">
@@ -290,8 +290,34 @@
 <p>多继承<br>单继承  </p>
 </blockquote>
 <blockquote>
-<p>表示法</p>
+<p>表示法  </p>
 </blockquote>
+<ol start="2">
+<li><strong>关联</strong><br>关联是一个或一组类的对象集合的笛卡尔积上的一个子集合（即一个由对象构成的集合），这种类间的关系用于刻画同种或异种类别事物间的关系。<br><strong>一元关联</strong>：连接到自身的关联。<br><strong>链</strong>：关联的一个实例（即一个对象偶对），用于刻画具体事物间的关系。 若在两个对象间建立了链，一个对象就可以直接访问另一个对象。在对象生命周期内，对象之间的链是在某段时间内存在的。<br><strong>多重性</strong><br><strong>关联角色</strong><br><strong>关联类</strong>：关联类是兼有关联和类的双重特征的建模元素，既可以把关联类看作是具有类的关联特征的关联，也可以看作是具有关联特征的类。<br>因其超过了当前面向对象编程语言的概念范围，可以通过<strong>增设类</strong>把关联类表示为普通类。<br><strong>N元关联</strong>：三个或三个以上的关联。<br><strong>限定符</strong>  </li>
+</ol>
+<ol start="3">
+<li><p><strong>聚合</strong><br>客观世界中，事物之间的整体-部分关系是大量存在的。运用聚合可清晰的表达事物之间的整体-部分关系。减少认识事物的复杂性。<br>可以理解为：一个类的定义引用了<strong>另一个类</strong>定义。<br>作为<strong>整体</strong>的类称为 聚集 ；作为<strong>部分</strong>的类称为 成分  </p>
+<blockquote>
+<p>非对称性<br>传递性</p>
+</blockquote>
+<p><strong>组合</strong>是聚合的一种形式，一个部分类的对象在一个时刻必须最多属于一个整体类的对象，且整体类的对象管理它的部分类的对象。<br>聚合表示成一条一端带有一个菱形的线段，组合菱形是实心的。  </p>
+</li>
+</ol>
+<ol start="4">
+<li><p><strong>依赖</strong><br>表明一个元素（源元素）的定义或实现<strong>依赖</strong>另一个元素的定义或实现，即对被依赖的元素的改变要改变该关系中的源元素，其中的元素可以是单个的模型元素，也可以是集合类型的模型元素。<br>在用况图中的包含（include） 扩展（extend） 就是依赖。<br>把依赖表示为两个建模元素之间的虚线。  </p>
+</li>
+<li><p><strong>接口</strong><br>接口声明了一组操作，用以刻画模型元素对外提供的服务或者它所需要的外部服务。这样的元素可以是类，以刻是构件和子系统。<br>一个类可实现一个或多个接口，把这样的接口称为类的<strong>供接口</strong>，一个或多个类可使用一个或多个接口，把这样的接口称为<strong>需接口</strong>。  </p>
+</li>
+</ol>
+<h3 id="顺序图"><a href="#顺序图" class="headerlink" title="顺序图"></a>顺序图</h3><p>顺序图是一种详细描述<strong>对象之间</strong>以及<strong>对象</strong>与<strong>参与者</strong>之间交互的图，它由一组相互协作的对象或参与者实例以及它们之间的消息组成，强调<strong>消息之间的顺序</strong>。<br>组成：<br>对象生命线：表示对象在一段时间内的存在。<br>执行规约：是一个对象执行一个操作的时期。在执行该操作时可能还调用了本对象或者其他对象中的操作。<br>消息：是对象之间的通信规格说明，这样的通信用于传输将发生的活动所需要的信息，既包含了控制（如调用）的规格说明，也包含了使用的数据之间的规格说明。<br>&nbsp;&nbsp;同步消息：一般用于普通的过程调用。<br>&nbsp;&nbsp;异步消息：用于表示异步通信，即发送者发出信号后，立即执行下一步操作，不进行等待。<br>信号： 是对象之间的异步通信的规格说明。  信号名 （参数名：类型表达式，参数名：类型表达式）  </p>
+<p>顺序图中的结构化控制：<br>sd 标签<br>可选执行 opt<br>条件执行 alt<br>并行执行 par<br>循环执行 loop<br>引用 ref </p>
+<h3 id="通信图"><a href="#通信图" class="headerlink" title="通信图"></a>通信图</h3><p>强调发送和接受消息的对象组织结构的图，用以展示围绕对象以及他们之间的的连接器而组织的交互。  </p>
+<h3 id="活动图"><a href="#活动图" class="headerlink" title="活动图"></a>活动图</h3><p>描述动作，动作的执行次序以及动作的输入与输出的图，由动作节点和边构成。  </p>
+<p>动作：可执行的基本功能单元，描述状态转换或活动，是原子的和即时的。<br>活动：有一组相互协作的动作构成的行为单元。活动在执行中可以被事件中断。<br>控制流；当动作结束时，马上进入下一个的动作流程。可以并发。<br>对象流：在控制流中可含有对象，用以描述动作间输入与输出的数据。<br>泳道：在对业务过程建模时，可以把动作分成组，每组由特定的履行者来执行。每个组分别称为一个泳道。  </p>
+<h3 id="状态机图"><a href="#状态机图" class="headerlink" title="状态机图"></a>状态机图</h3><p>描述了一个对象在其生命周期内因响应事件所经历的状态序列以及对这些事件做出的反应。<br>状态机图主要由状态和状态间的转移构成的。  </p>
+<p>事件：信号事件，调用事件，时间事件，改变事件。  事件名（参数名：类型表达式，参数名：类型表达式）<br>状态：对象在其生命周期中满足特定的条件，进行特定的活动或等待特定时间的状况。  初始状态，终止状态都是<strong>伪状态</strong>。<br>转移：状态间的转移，状态内的转移。  事件触发器[(参数名：类型表达式…)] [监护条件] / [动作表达式]<br>&nbsp;&nbsp;状态内的转移：entry/进入动作表达式；exit/退出动作表达式；do/活动<br>&nbsp;&nbsp;状态间的转移：<br>正交状态：具有多个区域的组合状态； 非正交状态：只有一个区域的组合状态。  </p>
+<h3 id="包图"><a href="#包图" class="headerlink" title="包图"></a>包图</h3><p>描述模型元素分组以及分组之间依赖的图，其中要用到的包时对模型元素进行分组的机制。  ::<br>一个包形成了一个命名空间。一个包的语境中同一种元素的名字必须唯一，在一个包中不同种类的模型元素可以有相同的名字。  </p>
+<p>包间的关系：<br>拥有<br>引入依赖 箭头指向提供者包。 &lt;&lt; import &gt;&gt;  相当于把提供者包的内容附加到客户包的<strong>公共命名空间中</strong><br>访问依赖 箭头指向提供者包。 &lt;&lt; access &gt;&gt;  相当于把提供者包的内容附加到客户包的<strong>私有命名空间中</strong><br>继承  </p>
 
       
 
@@ -530,6 +556,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">UML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
@@ -547,14 +581,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">叶子</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">UML</a>
               </li>
             
             <div class="clearfix"></div>
