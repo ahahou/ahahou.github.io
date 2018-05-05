@@ -19,8 +19,10 @@
 <meta property="og:image" content="http://yoursite.com/assets/study/waiguanmoshi.jpg">
 <meta property="og:image" content="http://yoursite.com/assets/study/shipeiqimoshi.jpg">
 <meta property="og:image" content="http://yoursite.com/assets/study/celuemoshi.jpg">
-<meta property="og:image" content="http://yoursite.com/assets/study/guanchazhemoshi.jpg">
-<meta property="og:updated_time" content="2018-05-05T10:14:04.671Z">
+<meta property="og:image" content="http://yoursite.com/assets/study/guanchazhemoshi.png">
+<meta property="og:image" content="http://yoursite.com/assets/study/gongchangfangfa.jpg">
+<meta property="og:image" content="http://yoursite.com/assets/study/chouxianggongchang.jpg">
+<meta property="og:updated_time" content="2018-05-05T11:54:10.711Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OOAD总结">
 <meta name="twitter:description" content="先简要的了解一下什么是面向对象：把一切都看成是对象。">
@@ -499,7 +501,7 @@
 </tr>
 <tr>
 <td style="text-align:center">问题</td>
-<td style="text-align:center">，当一个对象发生变化并对外发布消息时，需要向对象数目不定的对象集发出通知</td>
+<td style="text-align:center">当一个对象发生变化并对外发布消息时，需要向对象数目不定的对象集发出通知</td>
 </tr>
 <tr>
 <td style="text-align:center">解决方案</td>
@@ -515,7 +517,79 @@
 </tr>
 </tbody>
 </table>
-<p><img src="/assets/study/guanchazhemoshi.jpg" alt="">  </p>
+<p><img src="/assets/study/guanchazhemoshi.png" alt="">  </p>
+<h3 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h3><p>在<strong>一般类</strong>中定义一个用于创建对象的<strong>接口</strong>，让<strong>特殊类</strong>的对象决定实例化哪一个类。该模式把创建对象的工作推给特殊类的对象  </p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">名称</td>
+<td style="text-align:center">工厂方法模式</td>
+</tr>
+<tr>
+<td style="text-align:center">意图</td>
+<td style="text-align:center">定义一个用于创建对象的接口的接口，让特殊类的对象创建对象，即把创建对象的工作推迟给特殊类的对象去完成</td>
+</tr>
+<tr>
+<td style="text-align:center">问题</td>
+<td style="text-align:center">需要创建不同种类的对象，但不知道创建哪一种，而让特殊类去决策</td>
+</tr>
+<tr>
+<td style="text-align:center">解决方案</td>
+<td style="text-align:center">特殊类的对象负责创建对象</td>
+</tr>
+<tr>
+<td style="text-align:center">协作者</td>
+<td style="text-align:center">抽象产品，具体产品，抽象创建者，具体创建者</td>
+</tr>
+<tr>
+<td style="text-align:center">效果</td>
+<td style="text-align:center">通过创建的特殊类，客户可得到所需要的对象</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/assets/study/gongchangfangfa.jpg" alt="">  </p>
+<h3 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h3><p>为创建一组<strong>相关或相互依赖</strong>的对象提供一个<strong>接口</strong>，而<strong>不需要</strong>指出用于创建对象的<strong>具体类</strong>。  </p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">名称</td>
+<td style="text-align:center">抽象工厂模式</td>
+</tr>
+<tr>
+<td style="text-align:center">意图</td>
+<td style="text-align:center">为特定的客户端提供一组对象</td>
+</tr>
+<tr>
+<td style="text-align:center">问题</td>
+<td style="text-align:center">需要实例化出一组相关对象</td>
+</tr>
+<tr>
+<td style="text-align:center">解决方案</td>
+<td style="text-align:center">提供一种方式，把创建对象的规则从使用这些对象的客户对象中提取出来，放在负责创建对象组的工厂中</td>
+</tr>
+<tr>
+<td style="text-align:center">协作者</td>
+<td style="text-align:center">客户，抽象产品，具体产品，抽象工厂，具体工厂</td>
+</tr>
+<tr>
+<td style="text-align:center">效果</td>
+<td style="text-align:center">把使用哪些对象与创建者些对象的逻辑分开</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/assets/study/chouxianggongchang.jpg" alt=""> </p>
 
       
 
@@ -754,11 +828,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">UML</a>
+                <a href="javascript:void(0)" class="js-tag color3">进程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">叶子</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -770,15 +848,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">叶子</a>
+                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">进程</a>
+                <a href="javascript:void(0)" class="js-tag color4">UML</a>
               </li>
             
             <div class="clearfix"></div>
