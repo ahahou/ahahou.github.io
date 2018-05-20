@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-03T17:36:34.242Z</updated>
+  <updated>2018-05-20T02:26:36.761Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>操作系统</title>
+    <link href="http://yoursite.com/2018/05/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    <id>http://yoursite.com/2018/05/20/操作系统/</id>
+    <published>2018-05-20T02:13:13.000Z</published>
+    <updated>2018-05-20T02:26:36.761Z</updated>
+    
+    <content type="html"><![CDATA[<p>上一次对<strong>面向对象设计与分析</strong>进行了总结，没有采用<strong>思维导图</strong>的方式，此次对计算机操作系统的总结采用思维导图的方式，来进行比较那种方式更好同时，也算是复习啦。<br><a id="more"></a>  </p><h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><p><img src="/assets/study/OS1.jpg" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;上一次对&lt;strong&gt;面向对象设计与分析&lt;/strong&gt;进行了总结，没有采用&lt;strong&gt;思维导图&lt;/strong&gt;的方式，此次对计算机操作系统的总结采用思维导图的方式，来进行比较那种方式更好同时，也算是复习啦。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="总结" scheme="http://yoursite.com/tags/%E6%80%BB%E7%BB%93/"/>
+    
+      <category term="操作系统" scheme="http://yoursite.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>JAVA_String类</title>
