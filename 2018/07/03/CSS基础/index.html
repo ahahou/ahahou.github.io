@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="乘风行">
 <meta property="og:description" content="CSS概念      CSS（Cascading Style Sheet）层叠样式表，也称为级联样式表，用来设计网页风格    在网页制作时采用CSS技术，可以有效地对页面的布局、字体、颜色、背景和其他效果实现更加精确的控制。   只要对相应的代码做一些简单的修改，就可以改变同一页面的不同部分，或者不同网页的外观和格式。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-03T05:55:04.608Z">
+<meta property="og:updated_time" content="2019-01-22T15:08:19.815Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS基础">
 <meta name="twitter:description" content="CSS概念      CSS（Cascading Style Sheet）层叠样式表，也称为级联样式表，用来设计网页风格    在网页制作时采用CSS技术，可以有效地对页面的布局、字体、颜色、背景和其他效果实现更加精确的控制。   只要对相应的代码做一些简单的修改，就可以改变同一页面的不同部分，或者不同网页的外观和格式。">
@@ -204,13 +204,32 @@
 <hr>
 <p><strong>CSS</strong></p>
 <p>CSS语法：<br>CSS是一个由包含一个或多个规则的文本文件。<br> 规则：选择符Selector+  声明部分Declaration<br>选择器:通常是需要改变样式的HTML标记。<br>声明:由一个或多个属性名称与属性值对组成  “:”赋值, “,”多个属性值逗号分隔, “;”分隔  </p>
-<p>CSS选择器类型：<br>1.标记选择符—-对HTML的标记重定义。该样式立即生效。  </p>
-<blockquote>
-<p>p,h1{font-size:30px;color:blue;font-family:黑体;}<br>2.类选择符—-以点号“.”开头，并可以任意命名，如.div1、.files等，该样式应用后生效，有些标记的样式相同时，可以定义成选择符组。<br>.div1,.file{background:red;color:white;}<br>  联合选择器—标记+类选择器（p.c3{color:red;}）<br>3.ID选择符：以“#”开始，并可以任意命名。  </p>
-<p>#div1{background:red;color:white;}<br>4.伪选择符：一种特殊的类选择符，最大的作用就是对链接\<a>的不同状态定义不同的样式效果<br>   a:link{color:#339999;text-decration:none;}<br>     a:visited{color:#33cc00;text-decration:none}<br>     a:hover{color:red;text-decration:underline;}<br>     a:active{color:blue;text-decration:underline;}<br>     p:first-letter{}<br>     p:first-line{}</a></p>
+<p>CSS选择器类型：  </p>
+<ol>
+<li>标记选择符—-对HTML的标记重定义。该样式立即生效。  <blockquote>
+<p>p,h1{font-size:30px;color:blue;font-family:黑体;}</p>
 </blockquote>
+</li>
+<li>类选择符—-以点号“.”开头，并可以任意命名，如.div1、.files等，该样式应用后生效，有些标记的样式相同时，可以定义成选择符组。  <blockquote>
+<p>.div1,.file{background:red;color:white;}<br>联合选择器—标记+类选择器（p.c3{color:red;}）</p>
+</blockquote>
+</li>
+<li>ID选择符：以“#”开始，并可以任意命名。  <blockquote>
+<p>#div1{background:red;color:white;}  </p>
+</blockquote>
+</li>
+<li>伪选择符：一种特殊的类选择符，最大的作用就是对链接\<a>的不同状态定义不同的样式效果  <blockquote>
+<p>   a:link{color:#339999;text-decration:none;}<br>  a:visited{color:#33cc00;text-decration:none}<br>  a:hover{color:red;text-decration:underline;}<br>  a:active{color:blue;text-decration:underline;}<br>  p:first-letter{}<br>  p:first-line{}</p>
+</blockquote>
+</a></li>
+</ol>
 <p>ID选择符与类选择符的区别：<br>（1）类选择符可以给任意多的标记定义样式，但ID选择符在页面中标记中只能使用一次；<br>（2）ID选择符样式比类选择符样式优先级高。ID选择符局限性大，只能单独定义某个元素的样式（特殊情况下使用）。 </p>
-<p>CSS选择器声明：<br>1.集体声明<br>     h1,h2,h3,h4,h5,h6,p,h2.special,#one{color:red;font-family:黑体;}<br>2.全局声明 –通配符<br>   *{color:purple;font-size:16px;margin:0 auto;padding:0;}<br>3.派生选择符<br>   li strong{ font-style:italic; font-weight:normal;}<br>      strong{font-weight:bold;}  </p>
+<p>CSS选择器声明：  </p>
+<ol>
+<li>集体声明<br>  h1,h2,h3,h4,h5,h6,p,h2.special,#one{color:red;font-family:黑体;}    </li>
+<li>全局声明 –通配符<br>*{color:purple;font-size:16px;margin:0 auto;padding:0;}  </li>
+<li>派生选择符<br>li strong{ font-style:italic; font-weight:normal;}<br>   strong{font-weight:bold;}  </li>
+</ol>
 <p>CSS样式表类型：4种  </p>
 <ul>
 <li>内联样式表（Inline Style Sheet）&lt;标记 style=”属性: 属性值; 属性: 属性值;…”&gt;  标记本身定义的style优先于其他所有样式定义。  </li>
@@ -344,6 +363,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2018/07/17/Python1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Pythonb
+        
+      </div>
+    </a>
+  
   
     <a href="/2018/07/03/html基础/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">html基础</div>
@@ -389,7 +417,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 wangyibo
+    		&copy; 2019 wangyibo
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -465,6 +493,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">UML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
@@ -478,14 +522,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">String</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">UML</a>
               </li>
              
               <li class="article-tag-list-item">
