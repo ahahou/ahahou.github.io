@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="从零开始">
 <meta property="og:description" content="写在前面早在2两年前就开始了博客编写，但因为个人原因，只进行了短时间的记录，长时间没有对博客进行更新，同时当时未对掌握的技术进行总结，造成如今的从零开始进行学习，故改博客名为”从零开始”对自己进行警醒，但关于hexo安装，Github注册等早在以前就已经完成，故此处不进行过多赘述，只针对相关操作命令及一些配置文件内容进行总结。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-15T16:32:57.120Z">
+<meta property="og:updated_time" content="2020-01-15T16:37:43.533Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Github+hexo+Next的博客搭建">
 <meta name="twitter:description" content="写在前面早在2两年前就开始了博客编写，但因为个人原因，只进行了短时间的记录，长时间没有对博客进行更新，同时当时未对掌握的技术进行总结，造成如今的从零开始进行学习，故改博客名为”从零开始”对自己进行警醒，但关于hexo安装，Github注册等早在以前就已经完成，故此处不进行过多赘述，只针对相关操作命令及一些配置文件内容进行总结。">
@@ -354,7 +354,7 @@
 <li>在使用是可利用<code>hexo s --debug</code>进行本地服务运行，可通过<strong>localhost:4000</strong>进行访问预览。但使用之前需要使用<code>npm install hexo-server --save</code>安装相应的模块。  </li>
 <li>一切完成后便可向github上进行部署。<br>1.首先需要进入<strong>站点配置文件</strong>进行修改配置  <pre><code class="yml"><span class="attr">deploy:</span>
 <span class="attr">type:</span> <span class="string">git</span>
-<span class="attr">repo:</span> <span class="attr">https://github.com/ahahou/ahahou.github.io.git</span> 
+<span class="attr">repo:</span> <span class="string">git@github.com:ahahou/ahahou.github.io.git</span> 
 <span class="attr">branch:</span> <span class="string">master</span>
 </code></pre>
 2.安装hexo-deployer-git<br><code>npm install hexo-deployer-git --save</code><br>3.使用<code>hexo generate</code>可简写为<code>hexo g</code>生成静态文件。可加参数<code>-d</code>文件生成后立即部署网站,<code>-w</code>监视文件变动。<br>4.使用<code>hexo deploy</code>可简写为<code>hexo d</code>部署网站。  参数<code>-g</code>部署之前预先生成静态文件。  </li>
