@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="从零开始">
 <meta property="og:description" content="写在前面早在2两年前就开始了博客编写，但因为个人原因，只进行了短时间的记录，长时间没有对博客进行更新，同时当时未对掌握的技术进行总结，造成如今的从零开始进行学习，故改博客名为”从零开始”对自己进行警醒，但关于hexo安装，Github注册等早在以前就已经完成，故此处不进行过多赘述，只针对相关操作命令及一些配置文件内容进行总结。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-15T15:26:20.806Z">
+<meta property="og:updated_time" content="2020-01-15T16:32:57.120Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Github+hexo+Next的博客搭建">
 <meta name="twitter:description" content="写在前面早在2两年前就开始了博客编写，但因为个人原因，只进行了短时间的记录，长时间没有对博客进行更新，同时当时未对掌握的技术进行总结，造成如今的从零开始进行学习，故改博客名为”从零开始”对自己进行警醒，但关于hexo安装，Github注册等早在以前就已经完成，故此处不进行过多赘述，只针对相关操作命令及一些配置文件内容进行总结。">
@@ -341,29 +341,23 @@
 <hr>
 <h1 id="开始搭建"><a href="#开始搭建" class="headerlink" title="开始搭建"></a>开始搭建</h1><h2 id="两个配置文件"><a href="#两个配置文件" class="headerlink" title="两个配置文件"></a>两个配置文件</h2><p>有两个配置文件都叫做_config，一个位于hexo站点底下，称为<strong>站点配置文件</strong>,一个位于主题目录下，称为<strong>主题配置文件</strong>  </p>
 <h3 id="站点配置文件"><a href="#站点配置文件" class="headerlink" title="站点配置文件"></a>站点配置文件</h3><p>主题选择 <code>theme: next</code><br>网站标题 <code>title: 从零开始</code><br>网站副标题 <code>subtitle: 叶子( •̀ ω •́ )y</code><br>网站描述 <code>description: hello world</code><br>网站的关键词 <code>keywords: 王一博的博客</code><br>您的名字 <code>author: wangyibo</code><br>网站使用的语言 <code>language: zh-Hans</code>  </p>
-<h3 id="主题配置文件"><a href="#主题配置文件" class="headerlink" title="主题配置文件"></a>主题配置文件</h3><p>头像设置:<code>avatar: http://example.com/avatar.png</code><br>菜单设置:</p>
-<pre><code>menu:
-    home: / || home
-    about: /about/ || user
-    tags: /tags/ || tags
-    categories: /categories/ || th
-    archives: /archives/ || archive
-</code></pre><p>选择 Scheme<br>Scheme 是 NexT 提供的一种特性，借助于 Scheme，NexT 为你提供多种不同的外观。同时，几乎所有的配置都可以 在 Scheme 之间共用。目前 NexT 支持三种 Scheme，他们是：</p>
+<h3 id="主题配置文件"><a href="#主题配置文件" class="headerlink" title="主题配置文件"></a>主题配置文件</h3><p>头像设置:<code>avatar: http://example.com/avatar.png</code><br>菜单设置:<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line"><span class="attr">        home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">home</span></span><br><span class="line"><span class="attr">        about:</span> <span class="string">/about/</span> <span class="string">||</span> <span class="string">user</span></span><br><span class="line"><span class="attr">        tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">tags</span></span><br><span class="line"><span class="attr">        categories:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">th</span></span><br><span class="line"><span class="attr">        archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">archive</span></span><br></pre></td></tr></table></figure></p>
+<p>选择 Scheme<br>Scheme 是 NexT 提供的一种特性，借助于 Scheme，NexT 为你提供多种不同的外观。同时，几乎所有的配置都可以 在 Scheme 之间共用。目前 NexT 支持三种 Scheme，他们是：</p>
 <p>Muse - 默认 Scheme，这是 NexT 最初的版本，黑白主调，大量留白<br>Mist - Muse 的紧凑版本，整洁有序的单栏外观<br>Pisces - 双栏 Scheme，小家碧玉似的清新  </p>
 <h2 id="如何写一篇博客"><a href="#如何写一篇博客" class="headerlink" title="如何写一篇博客"></a>如何写一篇博客</h2><p>基础的配置大致完成后，接下来需要进行博客的编写。<br>Hexo 有三种默认布局：post、page 和 draft。在创建者三种不同类型的文件时，它们将会被保存到不同的路径；而您自定义的其他布局和 post 相同，都将储存到 source/_posts 文件夹。而写的文章的布局为<strong>post</strong>。  </p>
 <ol>
 <li><p>在source/_posts文件夹中新建一个以md为后缀名的文档<br>可以直接新建一个文档，也可以在终端输入<code>hexo new [post] &quot;文件名.md&quot;</code>，后一个方法建立的markdown文件会有如下信息,且文件名就是title的内容，使用较为方便，而第一个方法，需要手动打出相应信息。  </p>
-<pre><code>---  
-title: Github+hexo+Next的博客搭建  
-date: 2020-01-15 18:17:21  
-tags: [Git,Hexo,NexT]  
-categories：分类  
-updated: 更新日期  
---- 
-</code></pre></li>
-<li>运用相应的markdown语法进行博文的编写，NexT提供<code>&lt;!--more--&gt;</code>语法，可用作分割，将文章只显示其之前的内容，而进入后则提供全文阅读。     </li>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span><span class="bullet">--</span>  </span><br><span class="line"><span class="attr">title:</span> <span class="string">Github+hexo+Next的博客搭建</span>  </span><br><span class="line"><span class="attr">date:</span> <span class="number">2020</span><span class="bullet">-01</span><span class="bullet">-15</span> <span class="number">18</span><span class="string">:17:21</span>  </span><br><span class="line"><span class="attr">tags:</span> <span class="string">[Git,Hexo,NexT]</span>  </span><br><span class="line"><span class="string">categories：分类</span>  </span><br><span class="line"><span class="attr">updated:</span> <span class="string">更新日期</span>  </span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运用相应的markdown语法进行博文的编写，NexT提供<code>&lt;!--more--&gt;</code>语法，可用作分割，将文章只显示其之前的内容，而进入后则提供全文阅读。     </p>
+</li>
 <li>在使用是可利用<code>hexo s --debug</code>进行本地服务运行，可通过<strong>localhost:4000</strong>进行访问预览。但使用之前需要使用<code>npm install hexo-server --save</code>安装相应的模块。  </li>
-<li>一切完成后便可向github上进行pull操作。    </li>
+<li>一切完成后便可向github上进行部署。<br>1.首先需要进入<strong>站点配置文件</strong>进行修改配置  <pre><code class="yml"><span class="attr">deploy:</span>
+<span class="attr">type:</span> <span class="string">git</span>
+<span class="attr">repo:</span> <span class="attr">https://github.com/ahahou/ahahou.github.io.git</span> 
+<span class="attr">branch:</span> <span class="string">master</span>
+</code></pre>
+2.安装hexo-deployer-git<br><code>npm install hexo-deployer-git --save</code><br>3.使用<code>hexo generate</code>可简写为<code>hexo g</code>生成静态文件。可加参数<code>-d</code>文件生成后立即部署网站,<code>-w</code>监视文件变动。<br>4.使用<code>hexo deploy</code>可简写为<code>hexo d</code>部署网站。  参数<code>-g</code>部署之前预先生成静态文件。  </li>
 </ol>
 <h1 id="一些注意事项"><a href="#一些注意事项" class="headerlink" title="一些注意事项"></a>一些注意事项</h1>
       
