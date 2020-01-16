@@ -418,9 +418,7 @@
 <li><strong>对象约束语言</strong>：精确的方式描述基础结构，上层结构及用户建立模型中的表达式和约束    </li>
 <li><strong>图交换</strong>：规定了如何定义用于数据交换的XML文件的格式<br>UML2.4支持的模型图在逻辑上分为：<strong>结构图</strong>（静态方面）和<strong>行为图</strong>（动态方面）  </li>
 </ol>
-<hr>
-<hr>
-<hr>
+<h2 id="—"><a href="#—" class="headerlink" title="—-"></a>—-</h2><hr>
 <h2 id="面向对象分析"><a href="#面向对象分析" class="headerlink" title="面向对象分析"></a>面向对象分析</h2><p>运用面向对象的方法进行系统分析。<br><br><br><br><br><strong>面临的主要问题：</strong></p>
 <ol>
 <li>问题域和系统责任：<ol>
@@ -451,9 +449,7 @@
 </ol>
 <p>可以建立对象图，作为类图的补充。</p>
 <p><br></p>
-<hr>
-<hr>
-<hr>
+<h2 id="—-1"><a href="#—-1" class="headerlink" title="—-"></a>—-</h2><hr>
 <h2 id="图"><a href="#图" class="headerlink" title="图"></a>图</h2><h3 id="用况图"><a href="#用况图" class="headerlink" title="用况图"></a>用况图</h3><p> <strong>系统边界：</strong>系统边界是一个系统所包含的所有系统成分与系统以外的事物的分界线。<br> <strong>参与者：</strong>一组在功能上密切相关的角色，当一个事物与系统交互时，该事物要扮演这样的角色。 <strong>参与者不是系统的一部分，他们位于系统之外，是在系统之外的与系统交互的任何事物。</strong></p>
 <p><em>识别参与者</em>:</p>
 <ol>
@@ -494,17 +490,13 @@
 </ol>
 <blockquote>
 <p>非对称性<br>传递性</p>
-</blockquote>
-<blockquote>
 <p>多继承<br>单继承  </p>
-</blockquote>
-<blockquote>
 <p>表示法  </p>
 </blockquote>
-<ol start="2">
+<ol>
 <li><strong>关联</strong><br>关联是一个或一组类的对象集合的笛卡尔积上的一个子集合（即一个由对象构成的集合），这种类间的关系用于刻画同种或异种类别事物间的关系。<br><strong>一元关联</strong>：连接到自身的关联。<br><strong>链</strong>：关联的一个实例（即一个对象偶对），用于刻画具体事物间的关系。 若在两个对象间建立了链，一个对象就可以直接访问另一个对象。在对象生命周期内，对象之间的链是在某段时间内存在的。<br><strong>多重性</strong><br><strong>关联角色</strong><br><strong>关联类</strong>：关联类是兼有关联和类的双重特征的建模元素，既可以把关联类看作是具有类的关联特征的关联，也可以看作是具有关联特征的类。<br>因其超过了当前面向对象编程语言的概念范围，可以通过<strong>增设类</strong>把关联类表示为普通类。<br><strong>N元关联</strong>：三个或三个以上的关联。<br><strong>限定符</strong>  </li>
 </ol>
-<ol start="3">
+<ol>
 <li><p><strong>聚合</strong><br>客观世界中，事物之间的整体-部分关系是大量存在的。运用聚合可清晰的表达事物之间的整体-部分关系。减少认识事物的复杂性。<br>可以理解为：一个类的定义引用了<strong>另一个类</strong>定义。<br>作为<strong>整体</strong>的类称为 聚集 ；作为<strong>部分</strong>的类称为 成分  </p>
 <blockquote>
 <p>非对称性<br>传递性</p>
@@ -512,7 +504,7 @@
 <p><strong>组合</strong>是聚合的一种形式，一个部分类的对象在一个时刻必须最多属于一个整体类的对象，且整体类的对象管理它的部分类的对象。<br>聚合表示成一条一端带有一个菱形的线段，组合菱形是实心的。  </p>
 </li>
 </ol>
-<ol start="4">
+<ol>
 <li><p><strong>依赖</strong><br>表明一个元素（源元素）的定义或实现<strong>依赖</strong>另一个元素的定义或实现，即对被依赖的元素的改变要改变该关系中的源元素，其中的元素可以是单个的模型元素，也可以是集合类型的模型元素。<br>在用况图中的包含（include） 扩展（extend） 就是依赖。<br>把依赖表示为两个建模元素之间的虚线。箭头尾部元素依赖箭头头部元素    </p>
 </li>
 <li><p><strong>接口</strong><br>接口声明了一组操作，用以刻画模型元素对外提供的服务或者它所需要的外部服务。这样的元素可以是类，以刻是构件和子系统。<br>一个类可实现一个或多个接口，把这样的接口称为类的<strong>供接口</strong>，一个或多个类可使用一个或多个接口，把这样的接口称为<strong>需接口</strong>。  </p>
@@ -527,9 +519,7 @@
 <p>事件：信号事件，调用事件，时间事件，改变事件。  事件名（参数名：类型表达式，参数名：类型表达式）<br>状态：对象在其生命周期中满足特定的条件，进行特定的活动或等待特定时间的状况。  初始状态，终止状态都是<strong>伪状态</strong>。<br>转移：状态间的转移，状态内的转移。  事件触发器[(参数名：类型表达式…)] [监护条件] / [动作表达式]<br>&nbsp;&nbsp;状态内的转移：entry/进入动作表达式；exit/退出动作表达式；do/活动<br>&nbsp;&nbsp;状态间的转移：<br>正交状态：具有多个区域的组合状态； 非正交状态：只有一个区域的组合状态。  </p>
 <h3 id="包图"><a href="#包图" class="headerlink" title="包图"></a>包图</h3><p>描述模型元素分组以及分组之间依赖的图，其中要用到的包时对模型元素进行分组的机制。  ::<br>一个包形成了一个命名空间。一个包的语境中同一种元素的名字必须唯一，在一个包中不同种类的模型元素可以有相同的名字。  </p>
 <p>包间的关系：<br>拥有<br>引入依赖 箭头指向提供者包。 &lt;&lt; import &gt;&gt;  相当于把提供者包的内容附加到客户包的<strong>公共命名空间中</strong><br>访问依赖 箭头指向提供者包。 &lt;&lt; access &gt;&gt;  相当于把提供者包的内容附加到客户包的<strong>私有命名空间中</strong><br>继承   </p>
-<hr>
-<hr>
-<hr>
+<h2 id="—-2"><a href="#—-2" class="headerlink" title="—-"></a>—-</h2><hr>
 <h2 id="面向对象设计"><a href="#面向对象设计" class="headerlink" title="面向对象设计"></a>面向对象设计</h2><p>OOD模型：<br>核心部分：问题域部分（OOA的结果作为输出）<br>外围部分：人机交互部分，控制驱动部分，数据管理部分，构建及部署部分（最后进行）。  </p>
 <h3 id="问题域部分的设计："><a href="#问题域部分的设计：" class="headerlink" title="问题域部分的设计："></a>问题域部分的设计：</h3><p>复用类  {复用} 标记<br>增加一般类以建立公共协议<br>提高性能  </p>
 <p><strong>按编程语言调整继承</strong><br>多继承的调整：1.采用聚合把多继承换位单继承；2.采用压平的方式<br>取消继承<br>对多态性的调整  </p>
@@ -543,12 +533,11 @@
 <h3 id="数据管理部分的设计"><a href="#数据管理部分的设计" class="headerlink" title="数据管理部分的设计"></a>数据管理部分的设计</h3><p>需要长期存储的对象，称为<strong>持久对象</strong>，其属于的类属于<strong>持久类</strong><br>数据管理部分负责<strong>存储和检索持久对象</strong>，<strong>封装</strong>对这些对象的<strong>查找和存储机制</strong>，以隔离数据管理方案对其他部分的影响，特别是对<strong>问题域</strong>部分的影响   </p>
 <p>数据库：是<strong>长期</strong>存在于计算机内，有组织，可共享的数据<strong>集合</strong><br>数据库管理系统：用于建立，使用和维护数据库的<strong>软件</strong>，它对数据库进行统一的管理和控制，以保证数据库的<strong>完整性和安全性</strong><br>&nbsp;&nbsp;关系数据库<br>&nbsp;&nbsp;面向对象数据库  </p>
 <h3 id="构件及部署部分的设计"><a href="#构件及部署部分的设计" class="headerlink" title="构件及部署部分的设计"></a>构件及部署部分的设计</h3><p><strong>构建设计</strong> 构建图是描述<strong>构件</strong>，<strong>构件的内部结构</strong>和<strong>构建之间</strong>关系的图<br>&nbsp;&nbsp;构件：是系统中可<strong>替换和复用</strong>的模块化部分，它<strong>封装</strong>了自己的内容，利用<strong>供接口和需接口</strong>定义自身的行为；起类型的作用. 构件内部的一个部件：另一个构件，端口，类<br>&nbsp;&nbsp;&nbsp;&nbsp;表示：带有&lt;<component>&gt;的矩形，右上角可放一个图标<br>&nbsp;&nbsp;构件的接口：<br>&nbsp;&nbsp;&nbsp;&nbsp;构件的供接口：构件实现的接口； 构件的需接口：构建需要使用的接口，即构件向其他构件请求服务时要遵循的接口；<br>&nbsp;&nbsp;&nbsp;&nbsp;一个构件可以实现多个接口，也可以请求多个接口。一个接口可以由多个不同构件实现<br>&nbsp;&nbsp;&nbsp;&nbsp;三种表示：1.简略的图符形式；2.扩展方式；3.分栏矩形<br>&nbsp;&nbsp;构建的端口：描述了在构件与它的环境之间以及在构件与它的内部部件之间的一个显示的交互点，即端口时一个封装构件的显示的对外窗口，所有进出构件的消息都要进过端口。<br>&nbsp;&nbsp;&nbsp;&nbsp;表示：一个挎在构件边上的小方块<br>&nbsp;&nbsp;连接件：装配连接件；委托连接件<br>&nbsp;&nbsp;构件的内部结构：可以在构件的矩形图符上加一个分栏中来列出其内部组成元素（如接口，部件，连接件）：&lt;<realization>&gt;构件内部成分，&lt;<artifact>&gt;物理实现体<br>&nbsp;&nbsp;对构件的行为建模<br>&nbsp;&nbsp;对构件的实现建模  制品：工作产业制品（源代码等），部署制品（exe文件等）。&nbsp;&nbsp;类型级，实例级  &lt;&lt; manifest &gt;&gt;承载（一种依赖关系）<br>&nbsp;&nbsp;部署设计 <strong>节点</strong>是<strong>制品</strong>可部署并执行在其上的<strong>计算资源</strong>，并能够通过通信路径互联.通常把节点看成是一个可以在其上部署可执行制品的运行环境  表示：立方体<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;&lt; deploy &gt;&gt;</artifact></realization></component></p>
-<hr>
-<hr>
-<hr>
+<h2 id="—-3"><a href="#—-3" class="headerlink" title="—-"></a>—-</h2><hr>
 <h2 id="若干设计模式"><a href="#若干设计模式" class="headerlink" title="若干设计模式"></a>若干设计模式</h2><p>设计模式分类：<br>1.结构型：通过用<strong>接口</strong>将实现与抽象联系起来的方式把已由对象<strong>组合</strong>起来进行建模<br>2.行为型：通过对变化进行<strong>封装</strong>使得所建立的模型可以提供<strong>灵活</strong>的方式<br>3.创建型：用于对<strong>创建对象</strong>的建模  </p>
 <p>原则：<br>1.针对接口编程<br>2.优先使用组合，而不是继承<br>3.正确的使用委托<br>4.找出变化并进行封装  </p>
 <h3 id="外观模式"><a href="#外观模式" class="headerlink" title="外观模式"></a>外观模式</h3><p>用于为子系统中的一组对象提供统一的接口，使得系统更易于使用。也可以说,通过<strong>量身定做</strong>来建立提供所需功能的接口  </p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -583,8 +572,10 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p><img src="/assets/study/waiguanmoshi.jpg" alt="">  </p>
 <h3 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h3><p>用于将类的一个接口<strong>转化</strong>为另一个类所需的接口，以使由于<strong>接口不兼容</strong>的类能够一起协作  </p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -619,9 +610,11 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p><img src="/assets/study/shipeiqimoshi.jpg" alt="">  </p>
 <center>外观模式与适配器模式的比较</center>
 
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -648,7 +641,9 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h3 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h3><p>描述怎样按需要在一组<strong>可替换的算法</strong>中选用算法，即把所定义的一些算法各自<strong>封装</strong>起来，可根据<strong>客户的需要</strong>分别使用他们。  </p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -683,8 +678,10 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p><img src="/assets/study/celuemoshi.jpg" alt="">  </p>
 <h3 id="观察者模式（发布-订阅模式）"><a href="#观察者模式（发布-订阅模式）" class="headerlink" title="观察者模式（发布-订阅模式）"></a>观察者模式（发布-订阅模式）</h3><p>用于定义对象间的<strong>一对多的依赖关系</strong>，当一个对象发生变化并对外发布消息时，所有依赖它的对象都将<strong>得到通知并可进行更新</strong>  </p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -719,8 +716,10 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p><img src="/assets/study/guanchazhemoshi.png" alt="">  </p>
 <h3 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h3><p>在<strong>一般类</strong>中定义一个用于创建对象的<strong>接口</strong>，让<strong>特殊类</strong>的对象决定实例化哪一个类。该模式把创建对象的工作推给特殊类的对象  </p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -755,8 +754,10 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p><img src="/assets/study/gongchangfangfa.jpg" alt="">  </p>
 <h3 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h3><p>为创建一组<strong>相关或相互依赖</strong>的对象提供一个<strong>接口</strong>，而<strong>不需要</strong>指出用于创建对象的<strong>具体类</strong>。  </p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -791,14 +792,11 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p><img src="/assets/study/chouxianggongchang.jpg" alt="">  </p>
-<hr>
-<hr>
-<hr>
+<h2 id="—-4"><a href="#—-4" class="headerlink" title="—-"></a>—-</h2><hr>
 <h2 id="OOD的评价准则"><a href="#OOD的评价准则" class="headerlink" title="OOD的评价准则"></a>OOD的评价准则</h2><p>耦合：描述OOD成分之间的联系的紧密程度。  考虑耦合的目的：改动一部分，对其他部分的影响应尽量地小；阅读一部分，需要查阅的其他部分也要尽量少<br>&nbsp;&nbsp;交互耦合：模型成分间通过消息的交互程度  <strong>弱</strong>耦合好<br>&nbsp;&nbsp;继承耦合：特殊类继承一般类的属性和操作的数量程度  <strong>强</strong>耦合好<br>内聚：描述一个OOD成分内所完成功能的紧密程度<br>&nbsp;&nbsp;操作内聚：若一个操作只完成一项功能，则说它是高内聚的<br>&nbsp;&nbsp;类内聚：一个类内的属性和操作应该描述类本身的责任，属性均与操作相关，而且其内的所有操作作为一个整体也是紧密相关的<br>&nbsp;&nbsp;继承内聚：继承关系要讲的通<br>复用：复用以有的软件制品，能节省软件的开发成本，提高软件的质量和生产率<br>其他评价准则：<br>&nbsp;&nbsp;清晰度好<br>&nbsp;&nbsp;继承层次深度适当<br>&nbsp;&nbsp;保持对象和类的简单性<br>&nbsp;&nbsp;所有需要的属性和操作都要被适当地的使用<br>&nbsp;&nbsp;尽量地使用与提炼设计模式<br>&nbsp;&nbsp;考虑设计易变性地最小化  </p>
-<hr>
-<hr>
-<hr>
+<h2 id="—-5"><a href="#—-5" class="headerlink" title="—-"></a>—-</h2><hr>
 <h2 id="系统与模型"><a href="#系统与模型" class="headerlink" title="系统与模型"></a>系统与模型</h2><p>系统：是由为了达到特定目的而组织起来的模型元素构成的，可用从不同抽象层次和不同角度建造的模型来描述它。<br>如果一个系统较为复杂，可把它分解成一组子系统。每个子系统要完成特定的功能，有自己的应用环境，通过接口与系统交互<br>&lt;&lt; system &gt;&gt; 系统  &lt;&lt; subsystem &gt;&gt;子系统<br>对体系结构建模：<br>1.三层体系结构模式：用户界面，业务逻辑，数据管理<br>2.管道过滤型体系结构模式<br>模型：为了更好的描述事物的抽象<br>视图：是系统模型在某一侧面的投影，即它是观察或突出所被建模的系统的一个侧面（视角），其中要忽略与这以侧面无关的方面<br>五个视图，两个方面：用况视图，实现视图，进程视图，设计视图，部署视图， 静态方面，动态方面<br>&lt;&lt; trace &gt;&gt;的虚线 追踪依赖  从低层模型中的元素指向相邻高层模型中的元素<br>用带有一个三角图符或&lt;&lt; model &gt;&gt;的包图表示模型    </p>
 
       
@@ -972,12 +970,21 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
             
 
             
@@ -985,7 +992,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1041,7 +1048,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象概述"><span class="nav-number">1.</span> <span class="nav-text">面向对象概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象分析"><span class="nav-number">2.</span> <span class="nav-text">面向对象分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图"><span class="nav-number">3.</span> <span class="nav-text">图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用况图"><span class="nav-number">3.1.</span> <span class="nav-text">用况图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类图"><span class="nav-number">3.2.</span> <span class="nav-text">类图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念与表示法"><span class="nav-number">3.2.1.</span> <span class="nav-text">概念与表示法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#属性和操作"><span class="nav-number">3.2.2.</span> <span class="nav-text">属性和操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关系"><span class="nav-number">3.2.3.</span> <span class="nav-text">关系</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#顺序图"><span class="nav-number">3.3.</span> <span class="nav-text">顺序图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通信图"><span class="nav-number">3.4.</span> <span class="nav-text">通信图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#活动图"><span class="nav-number">3.5.</span> <span class="nav-text">活动图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状态机图"><span class="nav-number">3.6.</span> <span class="nav-text">状态机图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包图"><span class="nav-number">3.7.</span> <span class="nav-text">包图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象设计"><span class="nav-number">4.</span> <span class="nav-text">面向对象设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题域部分的设计："><span class="nav-number">4.1.</span> <span class="nav-text">问题域部分的设计：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#人机交互部分的设计："><span class="nav-number">4.2.</span> <span class="nav-text">人机交互部分的设计：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制驱动部分的设计"><span class="nav-number">4.3.</span> <span class="nav-text">控制驱动部分的设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据管理部分的设计"><span class="nav-number">4.4.</span> <span class="nav-text">数据管理部分的设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构件及部署部分的设计"><span class="nav-number">4.5.</span> <span class="nav-text">构件及部署部分的设计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#若干设计模式"><span class="nav-number">5.</span> <span class="nav-text">若干设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#外观模式"><span class="nav-number">5.1.</span> <span class="nav-text">外观模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#适配器模式"><span class="nav-number">5.2.</span> <span class="nav-text">适配器模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#策略模式"><span class="nav-number">5.3.</span> <span class="nav-text">策略模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#观察者模式（发布-订阅模式）"><span class="nav-number">5.4.</span> <span class="nav-text">观察者模式（发布-订阅模式）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工厂方法模式"><span class="nav-number">5.5.</span> <span class="nav-text">工厂方法模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象工厂模式"><span class="nav-number">5.6.</span> <span class="nav-text">抽象工厂模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OOD的评价准则"><span class="nav-number">6.</span> <span class="nav-text">OOD的评价准则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统与模型"><span class="nav-number">7.</span> <span class="nav-text">系统与模型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象概述"><span class="nav-number">1.</span> <span class="nav-text">面向对象概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#—"><span class="nav-number">2.</span> <span class="nav-text">—-</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象分析"><span class="nav-number">3.</span> <span class="nav-text">面向对象分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#—-1"><span class="nav-number">4.</span> <span class="nav-text">—-</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图"><span class="nav-number">5.</span> <span class="nav-text">图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用况图"><span class="nav-number">5.1.</span> <span class="nav-text">用况图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类图"><span class="nav-number">5.2.</span> <span class="nav-text">类图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念与表示法"><span class="nav-number">5.2.1.</span> <span class="nav-text">概念与表示法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#属性和操作"><span class="nav-number">5.2.2.</span> <span class="nav-text">属性和操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关系"><span class="nav-number">5.2.3.</span> <span class="nav-text">关系</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#顺序图"><span class="nav-number">5.3.</span> <span class="nav-text">顺序图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通信图"><span class="nav-number">5.4.</span> <span class="nav-text">通信图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#活动图"><span class="nav-number">5.5.</span> <span class="nav-text">活动图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#状态机图"><span class="nav-number">5.6.</span> <span class="nav-text">状态机图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包图"><span class="nav-number">5.7.</span> <span class="nav-text">包图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#—-2"><span class="nav-number">6.</span> <span class="nav-text">—-</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面向对象设计"><span class="nav-number">7.</span> <span class="nav-text">面向对象设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题域部分的设计："><span class="nav-number">7.1.</span> <span class="nav-text">问题域部分的设计：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#人机交互部分的设计："><span class="nav-number">7.2.</span> <span class="nav-text">人机交互部分的设计：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制驱动部分的设计"><span class="nav-number">7.3.</span> <span class="nav-text">控制驱动部分的设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据管理部分的设计"><span class="nav-number">7.4.</span> <span class="nav-text">数据管理部分的设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构件及部署部分的设计"><span class="nav-number">7.5.</span> <span class="nav-text">构件及部署部分的设计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#—-3"><span class="nav-number">8.</span> <span class="nav-text">—-</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#若干设计模式"><span class="nav-number">9.</span> <span class="nav-text">若干设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#外观模式"><span class="nav-number">9.1.</span> <span class="nav-text">外观模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#适配器模式"><span class="nav-number">9.2.</span> <span class="nav-text">适配器模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#策略模式"><span class="nav-number">9.3.</span> <span class="nav-text">策略模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#观察者模式（发布-订阅模式）"><span class="nav-number">9.4.</span> <span class="nav-text">观察者模式（发布-订阅模式）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工厂方法模式"><span class="nav-number">9.5.</span> <span class="nav-text">工厂方法模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象工厂模式"><span class="nav-number">9.6.</span> <span class="nav-text">抽象工厂模式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#—-4"><span class="nav-number">10.</span> <span class="nav-text">—-</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OOD的评价准则"><span class="nav-number">11.</span> <span class="nav-text">OOD的评价准则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#—-5"><span class="nav-number">12.</span> <span class="nav-text">—-</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统与模型"><span class="nav-number">13.</span> <span class="nav-text">系统与模型</span></a></li></ol></div>
             
 
           </div>
@@ -1075,7 +1082,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">20.2k</span>
+    <span title="Site words total count">20.9k</span>
   
 </div>
 
@@ -1285,6 +1292,8 @@
   
 
   
+  
+
 
   
 

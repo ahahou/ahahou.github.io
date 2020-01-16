@@ -402,17 +402,16 @@
 <p>CSS语法：<br>CSS是一个由包含一个或多个规则的文本文件。<br> 规则：选择符Selector+  声明部分Declaration<br>选择器:通常是需要改变样式的HTML标记。<br>声明:由一个或多个属性名称与属性值对组成  “:”赋值, “,”多个属性值逗号分隔, “;”分隔  </p>
 <p>CSS选择器类型：  </p>
 <ol>
-<li>标记选择符—-对HTML的标记重定义。该样式立即生效。  <blockquote>
+<li>标记选择符——对HTML的标记重定义。该样式立即生效。  <blockquote>
 <p>p,h1{font-size:30px;color:blue;font-family:黑体;}</p>
 </blockquote>
 </li>
-<li>类选择符—-以点号“.”开头，并可以任意命名，如.div1、.files等，该样式应用后生效，有些标记的样式相同时，可以定义成选择符组。  <blockquote>
-<p>.div1,.file{background:red;color:white;}<br>联合选择器—标记+类选择器（p.c3{color:red;}）</p>
+<li>类选择符——以点号“.”开头，并可以任意命名，如.div1、.files等，该样式应用后生效，有些标记的样式相同时，可以定义成选择符组。  <blockquote>
+<p>.div1,.file{background:red;color:white;}<br>联合选择器—-标记+类选择器（p.c3{color:red;}）</p>
 </blockquote>
 </li>
 <li>ID选择符：以“#”开始，并可以任意命名。  <blockquote>
-<p>#div1{background:red;color:white;}  </p>
-</blockquote>
+<h1 id="div1-background-red-color-white"><a href="#div1-background-red-color-white" class="headerlink" title="div1{background:red;color:white;}"></a>div1{background:red;color:white;}</h1></blockquote>
 </li>
 <li>伪选择符：一种特殊的类选择符，最大的作用就是对链接\<a>的不同状态定义不同的样式效果  <blockquote>
 <p>   a:link{color:#339999;text-decration:none;}<br>  a:visited{color:#33cc00;text-decration:none}<br>  a:hover{color:red;text-decration:underline;}<br>  a:active{color:blue;text-decration:underline;}<br>  p:first-letter{}<br>  p:first-line{}</p>
@@ -601,8 +600,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -621,12 +629,21 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
             
 
             
@@ -634,7 +651,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -681,6 +698,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#div1-background-red-color-white"><span class="nav-number">1.</span> <span class="nav-text">div1{background:red;color:white;}</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -708,7 +741,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">20.2k</span>
+    <span title="Site words total count">20.9k</span>
   
 </div>
 
@@ -918,6 +951,8 @@
   
 
   
+  
+
 
   
 
