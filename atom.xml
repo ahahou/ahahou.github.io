@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangyibo.top/"/>
-  <updated>2020-01-21T07:15:32.661Z</updated>
+  <updated>2020-01-21T07:20:26.418Z</updated>
   <id>http://wangyibo.top/</id>
   
   <author>
@@ -21,13 +21,13 @@
     <link href="http://wangyibo.top/2020/01/20/%E5%87%A0%E7%A7%8D%E7%BB%8F%E5%85%B8%E4%BC%A0%E7%BB%9F%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95/"/>
     <id>http://wangyibo.top/2020/01/20/几种经典传统机器学习算法/</id>
     <published>2020-01-20T06:57:58.000Z</published>
-    <updated>2020-01-21T07:15:32.661Z</updated>
+    <updated>2020-01-21T07:20:26.418Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在前文初入机器学习中，已经简要介绍了一些基本术语。本文简单介绍机器学习最为经典的五种算法：朴素贝叶斯，决策树，感知机，支持向量机和Logistic回归。简要阐述一下他们的思想和用scikit-learn实际应用的方法。  </p><a id="more"></a><h1 id="朴素贝叶斯"><a href="#朴素贝叶斯" class="headerlink" title="朴素贝叶斯"></a>朴素贝叶斯</h1><p>分为 <strong>朴素</strong> 和 <strong>贝叶斯</strong> 两个部分。分别对应条件独立性假设，和贝叶斯思维。</p><h2 id="条件独立性假设"><a href="#条件独立性假设" class="headerlink" title="条件独立性假设"></a>条件独立性假设</h2><p>通常会假设训练集为$D=\{(x_{1},y_{1}),…,(x_{N},y_{N})\}$，而且除了特殊的问题（如时序问题）以外，通常会假设$D$中的各个样本之间总是独立的，通俗来说就是<strong>毫无关系</strong>的。即数学关系式如下：  </p><script type="math/tex; mode=display">p(D_{i};\theta)=\prod_{i=1}^N p(D_{i};\theta)=\prod_{i=1}^N p(x_{i},y_{i};\theta)</script><p>其中$D_{i}=(x_{i},y_{i}) i = 1,2…N$<br>而条件独立性假设则要更强一些，即对于每个类别来说，特征之间是相互独立的。即$p(\vec x|y;\theta)=\prod_{i=1}^N p(x^(i)|y;\theta)$  是一个事实上很难满足的假设，因此有<strong>朴素</strong>的概念。</p><h2 id="贝叶斯思维"><a href="#贝叶斯思维" class="headerlink" title="贝叶斯思维"></a>贝叶斯思维</h2><p>指的是这样一种思想：我们需要在一个问题的解决方案中加入<strong>先验知识</strong>，然后根据先验知识进行<strong>推理</strong>并总结出<strong>后验知识</strong><br>但贝叶斯思维不是十全十美的。有时“简单的”决策可能会更合理。如先验知识知识不足时。<br>贝叶斯思维认为当先验知识足够完备时，一件事情发展趋势就是确定的：通过恰当的推理后，就能够得到完备的后验知识。当先验知识不足时，一件事的发展就充满了随机性，再怎么推理也只能得到带随机性的后验知识。  </p><h2 id="模型算法"><a href="#模型算法" class="headerlink" title="模型算法"></a>模型算法</h2><p>概率模型和普通模型相比，输出的会是一个概率值而不是一个用于分类或回归的、不具备概率含义的数值。<br>输入的特征向量为$\vec x$ ,概率模型为$P$,相应的普通模型为$G$,模型的参数为$\Theta$，过程就不进行推导，直接给出朴素贝叶斯算法：  </p><p>输入训练集<br>过程：  </p><ol><li>估计先验概率  $p(y_{k})$</li><li>估计条件概率   $p(x\ast^(i)|y_{k}$</li></ol><p>输出：朴素贝叶斯模型，能够估计数据$x*$的类别：  </p><script type="math/tex; mode=display">y\ast = G(\vec x\ast) = arg max_{k} p(y_{k})\prod_{i=1}^N p(x\ast^i | y_{k};\Theta)^(x^ \ast(i))</script><h1 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h1><p>对于机器，决策方式的本质就是：根据输入的数据在经过一系列的计算后，根据计算结果来按照预先给定的指示和规则进行决策。<br>我们的目标是寻找一种算法，使机器可以自动生成决策路径。可阐述为：挑选出$\vec x$中的某个具有代表性特征$x^(i)$作为“问题”，根据他的取值来分情况讨论。     </p><p>算法有两个关键点：  </p><ol><li>怎样算“最具代表性的特征”</li><li>怎样算“足以做出决策” </li></ol><p>简单来说，其实就是不断挑选出特征并对特征向量空间进行划分，当空间被划分到信息量很少的时候，就会给这个子空间打上标签，当一个新的特征向量进入模型时，只需看它属于哪个子空间，然后输出相应的标签即可。  </p><p>在决策树中，过拟合的问题尤为严重。因此需要一些措施来防止过拟合—-剪枝。  </p><h1 id="感知机和支持向量机SVM"><a href="#感知机和支持向量机SVM" class="headerlink" title="感知机和支持向量机SVM"></a>感知机和支持向量机SVM</h1><p>感知机和SVM的核心思想都是：在特征向量空间中找到一个超平面，是得他们能把两个类别的样本划分开，即找到一个合适的超平面。举个简单的例子，一张纸好似一个向量空间，而超平面就是在这张纸上画一条直线，将纸分为两部分。<br>这么一看，感知机与支持向量机仿佛和决策树有些相像，但还是有区别的： </p><ul><li>决策树一般会将特征向量空间划分为很多个子空间，感知机和SVM则只会划分两个子空间。  </li><li>决策树在划分空间时，一般用于划分的超平面都是垂直于某个维度的（不垂直也是存在的），而感知机和SVM的分离超平面则可以是任意一个超平面。  </li></ul><p>感知机和支持向量机也有不同，感知机只能保证对线性可数据集进行正确分类，没有考虑过多的泛化能力；而SVM通过考虑优化几何间隔（可以简单理解为不同数据距离分离超平面的距离）来增强模型的泛化能力。  </p><h1 id="logistic回归"><a href="#logistic回归" class="headerlink" title="logistic回归"></a>logistic回归</h1><p>可以简单的理解，logistic回归可以看作感知机模型的“概率版”，即它将感知机模型中的两个类别，假设为1，-1，变成了一个函数在（0-1）上，从而使模型具有概率的意义。  </p>]]></content>
+    <content type="html"><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在前文初入机器学习中，已经简要介绍了一些基本术语。本文简单介绍机器学习最为经典的五种算法：朴素贝叶斯，决策树，感知机，支持向量机和Logistic回归。简要阐述一下他们的思想。  </p><a id="more"></a><h1 id="朴素贝叶斯"><a href="#朴素贝叶斯" class="headerlink" title="朴素贝叶斯"></a>朴素贝叶斯</h1><p>分为 <strong>朴素</strong> 和 <strong>贝叶斯</strong> 两个部分。分别对应条件独立性假设，和贝叶斯思维。</p><h2 id="条件独立性假设"><a href="#条件独立性假设" class="headerlink" title="条件独立性假设"></a>条件独立性假设</h2><p>通常会假设训练集为$D=\{(x_{1},y_{1}),…,(x_{N},y_{N})\}$，而且除了特殊的问题（如时序问题）以外，通常会假设$D$中的各个样本之间总是独立的，通俗来说就是<strong>毫无关系</strong>的。即数学关系式如下：  </p><script type="math/tex; mode=display">p(D_{i};\theta)=\prod_{i=1}^N p(D_{i};\theta)=\prod_{i=1}^N p(x_{i},y_{i};\theta)</script><p>其中$D_{i}=(x_{i},y_{i}) i = 1,2…N$<br>而条件独立性假设则要更强一些，即对于每个类别来说，特征之间是相互独立的。即$p(\vec x|y;\theta)=\prod_{i=1}^N p(x^(i)|y;\theta)$  是一个事实上很难满足的假设，因此有<strong>朴素</strong>的概念。</p><h2 id="贝叶斯思维"><a href="#贝叶斯思维" class="headerlink" title="贝叶斯思维"></a>贝叶斯思维</h2><p>指的是这样一种思想：我们需要在一个问题的解决方案中加入<strong>先验知识</strong>，然后根据先验知识进行<strong>推理</strong>并总结出<strong>后验知识</strong><br>但贝叶斯思维不是十全十美的。有时“简单的”决策可能会更合理。如先验知识知识不足时。<br>贝叶斯思维认为当先验知识足够完备时，一件事情发展趋势就是确定的：通过恰当的推理后，就能够得到完备的后验知识。当先验知识不足时，一件事的发展就充满了随机性，再怎么推理也只能得到带随机性的后验知识。  </p><h2 id="模型算法"><a href="#模型算法" class="headerlink" title="模型算法"></a>模型算法</h2><p>概率模型和普通模型相比，输出的会是一个概率值而不是一个用于分类或回归的、不具备概率含义的数值。<br>输入的特征向量为$\vec x$ ,概率模型为$P$,相应的普通模型为$G$,模型的参数为$\Theta$，过程就不进行推导，直接给出朴素贝叶斯算法：  </p><p>输入训练集<br>过程：  </p><ol><li>估计先验概率  $p(y_{k})$</li><li>估计条件概率   $p(x\ast^(i)|y_{k}$</li></ol><p>输出：朴素贝叶斯模型，能够估计数据$x*$的类别：  </p><script type="math/tex; mode=display">y\ast = G(\vec x\ast) = arg max_{k} p(y_{k})\prod_{i=1}^N p(x\ast^i | y_{k};\Theta)^(x^ \ast(i))</script><h1 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h1><p>对于机器，决策方式的本质就是：根据输入的数据在经过一系列的计算后，根据计算结果来按照预先给定的指示和规则进行决策。<br>我们的目标是寻找一种算法，使机器可以自动生成决策路径。可阐述为：挑选出$\vec x$中的某个具有代表性特征$x^(i)$作为“问题”，根据他的取值来分情况讨论。     </p><p>算法有两个关键点：  </p><ol><li>怎样算“最具代表性的特征”</li><li>怎样算“足以做出决策” </li></ol><p>简单来说，其实就是不断挑选出特征并对特征向量空间进行划分，当空间被划分到信息量很少的时候，就会给这个子空间打上标签，当一个新的特征向量进入模型时，只需看它属于哪个子空间，然后输出相应的标签即可。  </p><p>在决策树中，过拟合的问题尤为严重。因此需要一些措施来防止过拟合—-剪枝。  </p><h1 id="感知机和支持向量机SVM"><a href="#感知机和支持向量机SVM" class="headerlink" title="感知机和支持向量机SVM"></a>感知机和支持向量机SVM</h1><p>感知机和SVM的核心思想都是：在特征向量空间中找到一个超平面，是得他们能把两个类别的样本划分开，即找到一个合适的超平面。举个简单的例子，一张纸好似一个向量空间，而超平面就是在这张纸上画一条直线，将纸分为两部分。<br>这么一看，感知机与支持向量机仿佛和决策树有些相像，但还是有区别的： </p><ul><li>决策树一般会将特征向量空间划分为很多个子空间，感知机和SVM则只会划分两个子空间。  </li><li>决策树在划分空间时，一般用于划分的超平面都是垂直于某个维度的（不垂直也是存在的），而感知机和SVM的分离超平面则可以是任意一个超平面。  </li></ul><p>感知机和支持向量机也有不同，感知机只能保证对线性可数据集进行正确分类，没有考虑过多的泛化能力；而SVM通过考虑优化几何间隔（可以简单理解为不同数据距离分离超平面的距离）来增强模型的泛化能力。  </p><h1 id="logistic回归"><a href="#logistic回归" class="headerlink" title="logistic回归"></a>logistic回归</h1><p>可以简单的理解，logistic回归可以看作感知机模型的“概率版”，即它将感知机模型中的两个类别，假设为1，-1，变成了一个函数在（0-1）上，从而使模型具有概率的意义。  </p>]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h2&gt;&lt;p&gt;在前文初入机器学习中，已经简要介绍了一些基本术语。本文简单介绍机器学习最为经典的五种算法：朴素贝叶斯，决策树，感知机，支持向量机和Logistic回归。简要阐述一下他们的思想和用scikit-learn实际应用的方法。  &lt;/p&gt;
+      &lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h2&gt;&lt;p&gt;在前文初入机器学习中，已经简要介绍了一些基本术语。本文简单介绍机器学习最为经典的五种算法：朴素贝叶斯，决策树，感知机，支持向量机和Logistic回归。简要阐述一下他们的思想。  &lt;/p&gt;
     
     </summary>
     
@@ -38,9 +38,9 @@
     
       <category term="机器学习" scheme="http://wangyibo.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="算法" scheme="http://wangyibo.top/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="python" scheme="http://wangyibo.top/tags/python/"/>
+    
+      <category term="算法" scheme="http://wangyibo.top/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -66,9 +66,9 @@
     
       <category term="机器学习" scheme="http://wangyibo.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="python" scheme="http://wangyibo.top/tags/python/"/>
-    
       <category term="深度学习" scheme="http://wangyibo.top/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="python" scheme="http://wangyibo.top/tags/python/"/>
     
   </entry>
   
