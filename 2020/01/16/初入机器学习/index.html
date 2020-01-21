@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="机器学习,深度学习,python," />
+  <meta name="keywords" content="机器学习,python,深度学习," />
 
 
 
@@ -82,7 +82,7 @@
 
 
 <meta name="description" content="引言随着人工智能的日渐火爆，机器学习的概念也日渐为人所熟知，本文用针对机器学习的一些概念及常用术语进行总结，便于日后深入的学习。">
-<meta name="keywords" content="机器学习,深度学习,python">
+<meta name="keywords" content="机器学习,python,深度学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="初入机器学习">
 <meta property="og:url" content="http://wangyibo.top/2020/01/16/初入机器学习/index.html">
@@ -90,7 +90,7 @@
 <meta property="og:description" content="引言随着人工智能的日渐火爆，机器学习的概念也日渐为人所熟知，本文用针对机器学习的一些概念及常用术语进行总结，便于日后深入的学习。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://wangyibo.top/2020/01/16/初入机器学习/1.jpg">
-<meta property="og:updated_time" content="2020-01-17T12:55:19.906Z">
+<meta property="og:updated_time" content="2020-01-21T06:45:30.987Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初入机器学习">
 <meta name="twitter:description" content="引言随着人工智能的日渐火爆，机器学习的概念也日渐为人所熟知，本文用针对机器学习的一些概念及常用术语进行总结，便于日后深入的学习。">
@@ -433,7 +433,7 @@
 <li><strong>交叉验证集（Cross Validation Set）</strong>是G能看不能用的数据。具体说，G使用训练集来训练，并会时不时的观察一下它在交叉验证集上的表现来决定是否继续训练，以及是否需要调节它自身的设置  </li>
 <li><strong>测试集（Test Set）</strong>用来评估G的性能的数据，是G“看不到”的数据。总之，测试集不会参与到训练当中，在实际搭建机器学习模型时一定要注意把它和交叉验证集分开  </li>
 </ul>
-<p>上文提到过，最终目的是<strong>能让特征向量空间中的每个特征向量在输入模型后，都能输出相对应的，正确的标签。</strong>因此模型空间中存在一个“正确的”模型$\hat{G}$，即$\hat{G}(x)=y(\forall x \in \chi)$<br>我们的目的则是让$G$接近$\hat{G}$，作为判断定义一个<strong>损失函数</strong> <em>L</em><br>但损失函数时<strong>局部</strong>的，因此需要定义一个<strong>全局</strong>的<strong>代价函数</strong> <em>C</em>  </p>
+<p>上文提到过，最终目的是<strong>能让特征向量空间中的每个特征向量在输入模型后，都能输出相对应的，正确的标签。</strong>因此模型空间中存在一个“正确的”模型$\hat{G}$，即$\hat{G}(x)=y(\forall x \in \chi)$<br>我们的目的则是让$G$接近$\hat{G}$，作为判断定义一个<strong>损失函数</strong> <em>L</em><br>但损失函数是<strong>局部</strong>的，因此需要定义一个<strong>全局</strong>的<strong>代价函数</strong> <em>C</em>  </p>
 <script type="math/tex; mode=display">C(G,\hat{G})=C(G,D)=1/N\sum_{i=1}^{n}(G(x_{i}),\hat{G}(x_{i}))</script><p>可以用梯度下降算等算法降低代价函数  </p>
 <ul>
 <li><strong>过拟合（Over Fitting）</strong>如果$G$在训练数据$D$上表现优异，但在样本空间如$\mathcal{D}的其余采样（如交叉实验集或测试集）上表现糟糕，则说$G$泛化能力差，或此时产生了“过拟合”  </li>
@@ -535,9 +535,9 @@ pip install -U tensorflow
           
             <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
           
-            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
-          
             <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
           
         </div>
       
@@ -559,6 +559,10 @@ pip install -U tensorflow
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/20/几种经典传统机器学习算法/" rel="prev" title="几种经典传统机器学习算法">
+                几种经典传统机器学习算法 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -639,7 +643,7 @@ pip install -U tensorflow
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -661,7 +665,7 @@ pip install -U tensorflow
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -751,7 +755,7 @@ pip install -U tensorflow
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">22.7k</span>
+    <span title="Site words total count">24.0k</span>
   
 </div>
 
