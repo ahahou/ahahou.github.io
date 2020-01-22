@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangyibo.top/"/>
-  <updated>2020-01-21T07:20:26.418Z</updated>
+  <updated>2020-01-22T14:14:59.294Z</updated>
   <id>http://wangyibo.top/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Pr CC 2018 基础教程</title>
+    <link href="http://wangyibo.top/2020/01/22/Pr-CC-2018-%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/"/>
+    <id>http://wangyibo.top/2020/01/22/Pr-CC-2018-基础教程/</id>
+    <published>2020-01-22T14:02:46.000Z</published>
+    <updated>2020-01-22T14:14:59.294Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文是为了快速上手Pr而写的一篇基础性指导文章，适合一个新手小白，快速的了解Pr剪辑的一些步骤和简单的进行一些操作，关于深层次的说明，更深入的视频剪辑技巧，本文不做过多的叙述。我是用的是Pr Pro CC 2018，其他版本一些操作大同小异，可以作为参考。<br><a id="more"></a></p><h1 id="制作一个视频"><a href="#制作一个视频" class="headerlink" title="制作一个视频"></a>制作一个视频</h1><h2 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h2><p>渲染程序：如果是NVIDIA显卡选择CUDA加速。<br>其它均选默认。 </p><h2 id="新建工程"><a href="#新建工程" class="headerlink" title="新建工程"></a>新建工程</h2><p>有许多窗口。 万一不小心关掉了面板，可以选择窗口工作区，重置为保存布局。  </p><h2 id="新建序列"><a href="#新建序列" class="headerlink" title="新建序列"></a>新建序列</h2><p>序列相当于一个容器，对要剪辑的素材进行存放。<br>文件-&gt;新建序列 ctrl +n<br>设置<br>时基：一般25帧每秒够用<br>像素长宽比：方形像素<br>采样率：44100Hz  </p><p>导入文件 ctlr + i 也可以直接拖入  </p><p>导出文件 ctlr + m<br>格式： 若导出MP4格式 选择h.264<br>匹配源：高比特率  视频清晰度和比特率有关。<br>目标比特率和最大比特率默认就好了。  </p><h1 id="剪辑技巧及剪辑工具"><a href="#剪辑技巧及剪辑工具" class="headerlink" title="剪辑技巧及剪辑工具"></a>剪辑技巧及剪辑工具</h1><p>~键 放大某个窗口。<br>文件 项目设置 常规中可以修改项目。<br>视频预览窗口 出入点设置。使用i 设置入点，使用o设置出点<br>视频音频都要，就按住画面推入到时间轴中<br>剃刀工具 C 选择工具 V<br>一个视频片段变长，使用波纹编辑工具B，可以不用麻烦移动后面的视频片段。<br>滚动 编辑工具 N  会影响其他的视频片段<br>比率拉伸工具 R  慢放的好工具  </p><h1 id="速度和关键帧"><a href="#速度和关键帧" class="headerlink" title="速度和关键帧"></a>速度和关键帧</h1><p>慢放：右键片段 速度持续时间 若100帧改为25帧，即可以慢放4倍<br>高帧率后期慢放才会流畅<br>右键视频文件，修改 解释素材 也可实现上述效果  </p><p>快放：右键 速度持续时间 把帧升高<br>在预览中快放  空格播放  按l是快放   按j是倒放 不影响视频文件  </p><p>效果控件shift +5 可以弹出此面板  时间重映射  比较好用<br>选择要改变速度开始的一帧，添加关键帧，在速度结束改变的一帧，添加关键帧<br>可以在时间轴中把视频拉大，即竖直拉<br>然后右键 显示剪辑关键帧，时间重映射，速度<br>可以使用钢笔工具P 可以快速打关键帧<br>将关键帧中间往下压， 慢放  </p><h1 id="PR效果"><a href="#PR效果" class="headerlink" title="PR效果"></a>PR效果</h1><p>效果面板，里很多效果控件，可以多尝试一下。  </p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文是为了快速上手Pr而写的一篇基础性指导文章，适合一个新手小白，快速的了解Pr剪辑的一些步骤和简单的进行一些操作，关于深层次的说明，更深入的视频剪辑技巧，本文不做过多的叙述。我是用的是Pr Pro CC 2018，其他版本一些操作大同小异，可以作为参考。&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="教程" scheme="http://wangyibo.top/categories/%E6%95%99%E7%A8%8B/"/>
+    
+      <category term="视频剪辑" scheme="http://wangyibo.top/categories/%E6%95%99%E7%A8%8B/%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91/"/>
+    
+    
+      <category term="视频剪辑" scheme="http://wangyibo.top/tags/%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91/"/>
+    
+      <category term="Pr" scheme="http://wangyibo.top/tags/Pr/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>简述Java虚拟机</title>
+    <link href="http://wangyibo.top/2020/01/21/%E7%AE%80%E8%BF%B0Java%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    <id>http://wangyibo.top/2020/01/21/简述Java虚拟机/</id>
+    <published>2020-01-21T12:17:00.000Z</published>
+    <updated>2020-01-21T14:02:22.709Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>JDK</strong> 全称Java SE Development kit由Java程序设计语言、Java虚拟机、JAVA API类库三部分组成，使用于支持Java程序开发的最小环境。<br><strong>JRE</strong> 全称Java runtime environment，包括：Java虚拟机、Java API子集。<br><a id="more"></a></p><h1 id="Java运行时数据区域"><a href="#Java运行时数据区域" class="headerlink" title="Java运行时数据区域"></a>Java运行时数据区域</h1><p>Java虚拟机在执行Java程序的时候会将内存划分为若干个数据区域。每个区域有各自的用途，创建和销毁时间。</p><p>为了方便学习与记忆先进行一个简单的分类：<br><strong>线程共享</strong>：方法区、堆<br><strong>线程隔离</strong>：虚拟机栈、本地方法栈、程序计数器  </p><h2 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h2><p>是一块较小的内存空间，时当前线程所执行的字节码的行号指示器。Java虚拟的多线程是由线程轮流切换并分配处理器的时间来实现的。  当执行Java方法时，程序计数器指向</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;JDK&lt;/strong&gt; 全称Java SE Development kit由Java程序设计语言、Java虚拟机、JAVA API类库三部分组成，使用于支持Java程序开发的最小环境。&lt;br&gt;&lt;strong&gt;JRE&lt;/strong&gt; 全称Java runtime environment，包括：Java虚拟机、Java API子集。&lt;br&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="http://wangyibo.top/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Java" scheme="http://wangyibo.top/categories/%E7%AC%94%E8%AE%B0/Java/"/>
+    
+    
+      <category term="Java" scheme="http://wangyibo.top/tags/Java/"/>
+    
+      <category term="JVM" scheme="http://wangyibo.top/tags/JVM/"/>
+    
+  </entry>
   
   <entry>
     <title>几种经典传统机器学习算法</title>
@@ -38,9 +90,9 @@
     
       <category term="机器学习" scheme="http://wangyibo.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="python" scheme="http://wangyibo.top/tags/python/"/>
-    
       <category term="算法" scheme="http://wangyibo.top/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="python" scheme="http://wangyibo.top/tags/python/"/>
     
   </entry>
   
@@ -66,9 +118,9 @@
     
       <category term="机器学习" scheme="http://wangyibo.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="深度学习" scheme="http://wangyibo.top/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="python" scheme="http://wangyibo.top/tags/python/"/>
+    
+      <category term="深度学习" scheme="http://wangyibo.top/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -175,9 +227,9 @@
     </summary>
     
     
-      <category term="随笔" scheme="http://wangyibo.top/tags/%E9%9A%8F%E7%AC%94/"/>
-    
       <category term="影评" scheme="http://wangyibo.top/tags/%E5%BD%B1%E8%AF%84/"/>
+    
+      <category term="随笔" scheme="http://wangyibo.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
@@ -198,9 +250,9 @@
     </summary>
     
     
-      <category term="游记" scheme="http://wangyibo.top/tags/%E6%B8%B8%E8%AE%B0/"/>
-    
       <category term="随笔" scheme="http://wangyibo.top/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="游记" scheme="http://wangyibo.top/tags/%E6%B8%B8%E8%AE%B0/"/>
     
   </entry>
   
@@ -220,9 +272,9 @@
     </summary>
     
     
-      <category term="随笔" scheme="http://wangyibo.top/tags/%E9%9A%8F%E7%AC%94/"/>
-    
       <category term="影评" scheme="http://wangyibo.top/tags/%E5%BD%B1%E8%AF%84/"/>
+    
+      <category term="随笔" scheme="http://wangyibo.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
@@ -243,9 +295,9 @@
     </summary>
     
     
-      <category term="随笔" scheme="http://wangyibo.top/tags/%E9%9A%8F%E7%AC%94/"/>
-    
       <category term="影评" scheme="http://wangyibo.top/tags/%E5%BD%B1%E8%AF%84/"/>
+    
+      <category term="随笔" scheme="http://wangyibo.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
