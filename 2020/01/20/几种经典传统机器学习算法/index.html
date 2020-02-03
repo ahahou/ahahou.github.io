@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="从零开始">
 <meta property="og:description" content="引言在前文初入机器学习中，已经简要介绍了一些基本术语。本文简单介绍机器学习最为经典的五种算法：朴素贝叶斯，决策树，感知机，支持向量机和Logistic回归。简要阐述一下他们的思想。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-21T07:20:26.418Z">
+<meta property="og:updated_time" content="2020-01-23T01:32:26.522Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="几种经典传统机器学习算法">
 <meta name="twitter:description" content="引言在前文初入机器学习中，已经简要介绍了一些基本术语。本文简单介绍机器学习最为经典的五种算法：朴素贝叶斯，决策树，感知机，支持向量机和Logistic回归。简要阐述一下他们的思想。">
@@ -359,7 +359,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,255 字
+                  1,310 字
                 </span>
               
 
@@ -375,7 +375,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4	分钟
+                  5	分钟
                 </span>
               
             </div>
@@ -417,13 +417,13 @@
 </ol>
 <p>简单来说，其实就是不断挑选出特征并对特征向量空间进行划分，当空间被划分到信息量很少的时候，就会给这个子空间打上标签，当一个新的特征向量进入模型时，只需看它属于哪个子空间，然后输出相应的标签即可。  </p>
 <p>在决策树中，过拟合的问题尤为严重。因此需要一些措施来防止过拟合—-剪枝。  </p>
-<h1 id="感知机和支持向量机SVM"><a href="#感知机和支持向量机SVM" class="headerlink" title="感知机和支持向量机SVM"></a>感知机和支持向量机SVM</h1><p>感知机和SVM的核心思想都是：在特征向量空间中找到一个超平面，是得他们能把两个类别的样本划分开，即找到一个合适的超平面。举个简单的例子，一张纸好似一个向量空间，而超平面就是在这张纸上画一条直线，将纸分为两部分。<br>这么一看，感知机与支持向量机仿佛和决策树有些相像，但还是有区别的： </p>
+<h1 id="感知机和支持向量机SVM"><a href="#感知机和支持向量机SVM" class="headerlink" title="感知机和支持向量机SVM"></a>感知机和支持向量机SVM</h1><p>感知机和SVM的核心思想都是：在特征向量空间中找到一个超平面，使得他们能把两个类别的样本划分开，即找到一个合适的超平面。举个简单的例子，一张纸好似一个向量空间，而超平面就是在这张纸上画一条直线，将纸分为两部分。<br>超平面公式可写成：$f_{\Pi}(\vec x) = sign(w_{0}+\vec w^T \vec x)$<br>这么一看，感知机与支持向量机仿佛和决策树有些相像，但还是有区别的： </p>
 <ul>
 <li>决策树一般会将特征向量空间划分为很多个子空间，感知机和SVM则只会划分两个子空间。  </li>
 <li>决策树在划分空间时，一般用于划分的超平面都是垂直于某个维度的（不垂直也是存在的），而感知机和SVM的分离超平面则可以是任意一个超平面。  </li>
 </ul>
-<p>感知机和支持向量机也有不同，感知机只能保证对线性可数据集进行正确分类，没有考虑过多的泛化能力；而SVM通过考虑优化几何间隔（可以简单理解为不同数据距离分离超平面的距离）来增强模型的泛化能力。  </p>
-<h1 id="logistic回归"><a href="#logistic回归" class="headerlink" title="logistic回归"></a>logistic回归</h1><p>可以简单的理解，logistic回归可以看作感知机模型的“概率版”，即它将感知机模型中的两个类别，假设为1，-1，变成了一个函数在（0-1）上，从而使模型具有概率的意义。  </p>
+<p>感知机和支持向量机也有不同，感知机只能保证对线性可数据集进行正确分类，没有考虑过多的泛化能力；而SVM通过考虑优化几何间隔（可以简单理解为不同数据距离分离超平面的距离）来增强模型的泛化能力。<br>感知机模型表达式： $G(\vec x) = sign(w_{0}+\vec w^T \vec x)$</p>
+<h1 id="logistic回归"><a href="#logistic回归" class="headerlink" title="logistic回归"></a>logistic回归</h1><p>可以简单的理解，logistic回归可以看作感知机模型的“概率版”，即它将感知机模型中的两个类别，假设为1，-1，变成了一个函数在（0-1）上，从而使模型具有概率的意义。<br>模型表达式： $G(\vec x) = \sigma(w_{0}+\vec w^T \vec x)$</p>
 
       
     </div>
@@ -598,7 +598,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -609,7 +609,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -620,7 +620,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -710,7 +710,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">24.8k</span>
+    <span title="Site words total count">27.1k</span>
   
 </div>
 
