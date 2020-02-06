@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangyibo.top/"/>
-  <updated>2020-02-03T08:39:36.776Z</updated>
+  <updated>2020-02-06T07:17:46.968Z</updated>
   <id>http://wangyibo.top/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>TensorFlow</title>
+    <link href="http://wangyibo.top/2020/02/05/TensorFlow/"/>
+    <id>http://wangyibo.top/2020/02/05/TensorFlow/</id>
+    <published>2020-02-05T08:50:14.000Z</published>
+    <updated>2020-02-06T07:17:46.968Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文主要简述TensorFLow1的组成单元于基本思想，同时与windows10环境搭建深度学习的框架，还有在Jupyter下运用TensorFlow做的一些例子，<br>以来熟悉TensorFLow的最基础操作。  </p><a id="more"></a><h1 id="TensorFlow的组成单元与基本思想"><a href="#TensorFlow的组成单元与基本思想" class="headerlink" title="TensorFlow的组成单元与基本思想"></a>TensorFlow的组成单元与基本思想</h1><p>TensorFlow是一个基于数据流编程（dataflow programming）的符号数学系统，被广泛应用于各类机器学习（machine learning）算法的编程实现。<br>TensorFlow大致框架为下图：<br><img src="/2020/02/05/TensorFlow/p1.PNG" alt="框架">  </p><ul><li>TensorFlow 的核心在于构建运算图（Graph），需要做的是往运算图中加入元素，定义出一套“运算规则”。</li><li>TensorFlow构建的图是静态图，搭建好了之后没法进行更改，但可以使用一些方法使得它在静态图内部又一些动态性（如用tf.cond使模型可支持条件语句）。同时，通过利用“占位符（placeholder）”让TenserFlow具有较强的灵活性。</li><li>使用 feed 和 fetch 可以为任意的操作(arbitrary operation) 赋值或者从其中获取数据</li><li>节点被称之为 op (operation 的缩写). 一个 op 获得 0 个或多个 Tensor, 执行计算, 产生 0 个或多个 Tensor. 每个 Tensor 是一个类型化的多维数组</li><li>Sessio可以“启动”由Graph定义的运算规则，而在启动的过程中，Session又可以做额外三件事：<ul><li>赋予“运算规则”中一些“占位符”一些具体的值；</li><li>根据可能存在的占位符的取值和相应的运算规则，提取出想要的中间结果；</li><li>如果启动的运算规则包括“更新参数（train_step）”这个运算规则的话，就更新相应的可训练变量。</li></ul></li><li>TensorFlow的基本元素有三种：常量(Constant)、可训练变量(Variable)和不可训练的变量(Variable（trainable=False）),而这三种基本元素可以统称为张量（Tensor）。</li><li>TensorFlow模型的训练通常分三步走：<ul><li>把算法的损失函数在运算图中表示出来。</li><li>根据超参数设置来定义一个优化器。 </li><li>利用优化器和运算图中的损失函数来得到一个更新步骤(train_step),然后执行sess.run(train_step)之类的语句来完成模型的迭代。  </li></ul></li></ul><h1 id="Window10下搭建环境"><a href="#Window10下搭建环境" class="headerlink" title="Window10下搭建环境"></a>Window10下搭建环境</h1><p>因为服务器到期，因此不得不要在自己的机器上搭建环境。<br>我机器上未安装python等，因此我采用了anaconda来快速搭建。</p><p>Anaconda指的是一个开源的Python发行版本，其包含了conda、Python等180多个科学包及其依赖项。<br>下载可以去官网进行下载，我因为在官网下载太慢于是用了<a href="https://mirror.tuna.tsinghua.edu.cn/help/anaconda/" target="_blank" rel="noopener">清华的镜像</a>下载，我下载的版本是<br><img src="/2020/02/05/TensorFlow/p2.PNG" alt="版本信息"><br>下载好了，之后便开始安装，在下图中两个选项均选择上<br><img src="/2020/02/05/TensorFlow/p3.PNG" alt=""></p><p>之后便可以看到安装完成。<br><img src="/2020/02/05/TensorFlow/p4.jpg" alt="">   </p><p>以管理员身份打开Anaconda Prompt，键入<code>pip install tensorflow</code><br>便可下载tensorflow库，在这种可能会遇到如下问题：  </p><ol><li>下载过慢<br>便可输入 <code>pip -i 镜像地址 -u tensorflow</code> </li><li>下载的版本不是我需要的版本，则输入以下代码：<br><code>pip install -i https://pypi.tuna.tsinghua.edu.cn/simple/ --upgrade tensorflow==1.0.1</code></li><li>对镜像地址不信任<br>可在镜像地址前加  <code>--trusted-host</code></li></ol><p>判断是否可以使用安装好<br><img src="/2020/02/05/TensorFlow/p5.jpg" alt=""> </p><p>使用Jupyter NoteBook时也会遇到一些问题，如需改其工作路径，需要在用户目录下的.jupyter中找到jupyter_notebook_config.py文件，若没有则百度吧，一行命令就可以了。<br>算了，只需在命令行敲入<code>jupyter notebook --generate-config</code>便可。<br>随后，只需修改文件中的文件路径，改为需要使用的路径：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c.NotebookApp.notebook_dir = <span class="string">"文件路径"</span></span><br></pre></td></tr></table></figure></p><p>便可。<br>以上大致基础配置已经完成。  </p><h1 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h1><ol><li>简单的创建图和启动图<br><img src="/2020/02/05/TensorFlow/p6.png" alt="">  </li><li>变量的操作<br><img src="/2020/02/05/TensorFlow/p7.jpg" alt=""></li><li>fetch和feed<br><img src="/2020/02/05/TensorFlow/p8.jpg" alt=""> </li><li>tensorflow的一个简单示例<br><img src="/2020/02/05/TensorFlow/p9.jpg" alt=""></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文主要简述TensorFLow1的组成单元于基本思想，同时与windows10环境搭建深度学习的框架，还有在Jupyter下运用TensorFlow做的一些例子，&lt;br&gt;以来熟悉TensorFLow的最基础操作。  &lt;/p&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="http://wangyibo.top/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="机器学习" scheme="http://wangyibo.top/categories/%E7%AC%94%E8%AE%B0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="TensorFlow" scheme="http://wangyibo.top/categories/%E7%AC%94%E8%AE%B0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/TensorFlow/"/>
+    
+    
+      <category term="TensorFlow" scheme="http://wangyibo.top/tags/TensorFlow/"/>
+    
+      <category term="机器学习" scheme="http://wangyibo.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="深度学习" scheme="http://wangyibo.top/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>神经网络入门</title>
@@ -145,9 +175,9 @@
     
       <category term="机器学习" scheme="http://wangyibo.top/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="python" scheme="http://wangyibo.top/tags/python/"/>
-    
       <category term="深度学习" scheme="http://wangyibo.top/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="python" scheme="http://wangyibo.top/tags/python/"/>
     
   </entry>
   
@@ -254,9 +284,9 @@
     </summary>
     
     
-      <category term="影评" scheme="http://wangyibo.top/tags/%E5%BD%B1%E8%AF%84/"/>
-    
       <category term="随笔" scheme="http://wangyibo.top/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="影评" scheme="http://wangyibo.top/tags/%E5%BD%B1%E8%AF%84/"/>
     
   </entry>
   
@@ -277,9 +307,9 @@
     </summary>
     
     
-      <category term="随笔" scheme="http://wangyibo.top/tags/%E9%9A%8F%E7%AC%94/"/>
-    
       <category term="游记" scheme="http://wangyibo.top/tags/%E6%B8%B8%E8%AE%B0/"/>
+    
+      <category term="随笔" scheme="http://wangyibo.top/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
@@ -299,9 +329,9 @@
     </summary>
     
     
-      <category term="影评" scheme="http://wangyibo.top/tags/%E5%BD%B1%E8%AF%84/"/>
-    
       <category term="随笔" scheme="http://wangyibo.top/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="影评" scheme="http://wangyibo.top/tags/%E5%BD%B1%E8%AF%84/"/>
     
   </entry>
   
@@ -322,9 +352,9 @@
     </summary>
     
     
-      <category term="影评" scheme="http://wangyibo.top/tags/%E5%BD%B1%E8%AF%84/"/>
-    
       <category term="随笔" scheme="http://wangyibo.top/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="影评" scheme="http://wangyibo.top/tags/%E5%BD%B1%E8%AF%84/"/>
     
   </entry>
   
