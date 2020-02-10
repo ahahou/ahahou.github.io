@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="从零开始">
 <meta property="og:description" content="神经网络的结构Logistic回归可以视为神经网络的基本单元，但要做一个扩展，把范围不必拘束到0-1。表达式可以表示为 f(\vec x) = \phi (w_{0}+\vec w^T \vec x)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-03T08:39:36.776Z">
+<meta property="og:updated_time" content="2020-02-09T11:26:26.800Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="神经网络入门">
 <meta name="twitter:description" content="神经网络的结构Logistic回归可以视为神经网络的基本单元，但要做一个扩展，把范围不必拘束到0-1。表达式可以表示为 f(\vec x) = \phi (w_{0}+\vec w^T \vec x)">
@@ -359,7 +359,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,549 字
+                  1,638 字
                 </span>
               
 
@@ -375,7 +375,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5	分钟
+                  6	分钟
                 </span>
               
             </div>
@@ -440,9 +440,9 @@
 <p>输入层的“激活函数”其实是数据预处理函数，如标准化；输出层的是变换函数，如Softmax函数（将输出层得到的输入，视为正比于概率向量的对数，并<br>通过简单的变换得到概率输出）。</p>
 <h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>是模型在某个样本上的表现。模型表现的越差意味着损失越大。<br>需要对损失函数求梯度（用梯度下降算法）来更新模型的参数。<br>损失函数的选取很大程度上取决于输出层的变换函数。  </p>
 <ul>
-<li>（欧式）距离损失函数</li>
-<li>交叉熵</li>
-<li>log-likelihood损失函数  </li>
+<li>（欧式）距离损失函数<br>模型的输出值G(x)和真值y的（欧式）距离越大，损失就会越大，反之越小。</li>
+<li>交叉熵(corss-entropy)<br>适用于二分类或神经元是线性的用此也合适，且权值和偏执值的调整与激活函数的梯度无关，与输出值和实际值的误差有关。</li>
+<li>log-likelihood损失函数<br>适用与多分类。  </li>
 </ul>
 <h1 id="反向传播算法（BackPropagation）"><a href="#反向传播算法（BackPropagation）" class="headerlink" title="反向传播算法（BackPropagation）"></a>反向传播算法（BackPropagation）</h1><p>神经网络是很依赖于梯度下降算法的，而梯度下降算法要求算出各个参数的梯度。而由于神经网络相对复杂，所以直接对每个参数求梯度会带来无法忍受的时间<br>开销。反向传播算法是一个可以能够高效计算各个参数梯度的方法，利用链式法则，一层一层的地将网络中的梯度算出来。<br>简单理解就是，根据损失函数求出输出层对应的梯度，由于样本和损失函数都已经给定，所以第一个已知量是损失函数对模型输出的梯度，以后就是从这个已知量，<br>一层一层的向前推导，得到各个参数的梯度。  </p>
 <h1 id="参数的更新"><a href="#参数的更新" class="headerlink" title="参数的更新"></a>参数的更新</h1><p>由反向传播算法，已经得到了梯度，于是要利用梯度运用梯度下降算法进行参数的更新。 </p>
@@ -636,7 +636,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -647,7 +647,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -658,7 +658,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -748,7 +748,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">28.1k</span>
+    <span title="Site words total count">32.8k</span>
   
 </div>
 
