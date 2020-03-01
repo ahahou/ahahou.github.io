@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/leimu.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/leimu.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/leimu.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="深度学习,递归神经网络,长短期记忆网络," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="从零开始" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="递归神经网络（RNN）主要用于处理序列或时序数据。在常规的神经网络中，所有的输入层和输出层是相互独立的。对于一个给定的句子去预测下一个单词的任务，最好提前知道前面出现过的单词。RNN对序列中的每个元素重复同样的处理，输出依赖于前面的计算。RNN可以看作是一个存储了到目前为止已计算信息的存储器。">
+<meta name="keywords" content="深度学习,递归神经网络,长短期记忆网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RNN和RSTM">
+<meta property="og:url" content="http://wangyibo.top/2020/02/18/RNN和RSTM/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="递归神经网络（RNN）主要用于处理序列或时序数据。在常规的神经网络中，所有的输入层和输出层是相互独立的。对于一个给定的句子去预测下一个单词的任务，最好提前知道前面出现过的单词。RNN对序列中的每个元素重复同样的处理，输出依赖于前面的计算。RNN可以看作是一个存储了到目前为止已计算信息的存储器。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://wangyibo.top/2020/02/18/RNN和RSTM/1.PNG">
+<meta property="og:image" content="http://wangyibo.top/2020/02/18/RNN和RSTM/2.PNG">
+<meta property="og:image" content="http://wangyibo.top/2020/02/18/RNN和RSTM/3.PNG">
+<meta property="og:image" content="http://wangyibo.top/2020/02/18/RNN和RSTM/4.PNG">
+<meta property="og:updated_time" content="2020-02-18T11:37:28.139Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RNN和RSTM">
+<meta name="twitter:description" content="递归神经网络（RNN）主要用于处理序列或时序数据。在常规的神经网络中，所有的输入层和输出层是相互独立的。对于一个给定的句子去预测下一个单词的任务，最好提前知道前面出现过的单词。RNN对序列中的每个元素重复同样的处理，输出依赖于前面的计算。RNN可以看作是一个存储了到目前为止已计算信息的存储器。">
+<meta name="twitter:image" content="http://wangyibo.top/2020/02/18/RNN和RSTM/1.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wangyibo.top/2020/02/18/RNN和RSTM/"/>
+
+
+
+
+
+  <title>RNN和RSTM | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">叶子( •̀ ω •́ )y</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangyibo.top/2020/02/18/RNN和RSTM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangyibo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/img/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">RNN和RSTM</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-18T14:55:05+08:00">
+                2020-02-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,132 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5	分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>递归神经网络（RNN）主要用于处理序列或时序数据。在常规的神经网络中，所有的输入层和输出层是相互独立的。对于一个给定的句子去<br>预测下一个单词的任务，最好提前知道前面出现过的单词。RNN对序列中的每个元素重复同样的处理，输出依赖于前面的计算。<br>RNN可以看作是一个存储了到目前为止已计算信息的<strong>存储器</strong>。  </p>
+<a id="more"></a>
+<h1 id="递归神经网络"><a href="#递归神经网络" class="headerlink" title="递归神经网络"></a>递归神经网络</h1><p>RNN考虑了输入数据的时间特性。RNN单元的输入既有当前迭代时间的信息也有上一步的信息。<br><img src="/2020/02/18/RNN和RSTM/1.PNG" alt=""><br>想一下五个单词的序列，网络将被展开分为一个五层的神经网络，每个单词为一层。  </p>
+<h1 id="长短期记忆网络"><a href="#长短期记忆网络" class="headerlink" title="长短期记忆网络"></a>长短期记忆网络</h1><p>递归神经网络面临的最大障碍是<strong>梯度消失</strong>问题。<br>梯度展示了所有权重随着误差的变化情况，如果我们不知道梯度，就无法按减低损失或误差的方向更新权重，神经网络就会停止学习。<br><img src="/2020/02/18/RNN和RSTM/2.PNG" alt=""> </p>
+<p>长短期记忆（LSTM）旨在克服梯度消失的问题。保留长时间的信息对其隐藏行为是极其有效的。<br><img src="/2020/02/18/RNN和RSTM/3.PNG" alt=""><br>在标准的RNN中，循环单元会有一个基本结构，如一个tanh层，而在LSTM中循环结构单元不同，相对较为复杂。  </p>
+<p>LSTM的核心是单元状态C，它像一个传送带。传送带在微小的线性相互作用下移动。数据流动非常直接。<br>LSTM可以移除或增加信息至单元状态，并由称为门的结构精确控制。  </p>
+<ol>
+<li>LSTM网络的第一步确定哪些信息从单元状态中丢弃，这个决策由一个sigmoid层完成，该层称为遗忘门层。遗忘门层查看之前的状态h(t-1)和当前的输入x(t),并针对每一个单元状态C(t-1)输出一个0到1之间的数字，其中0代表<strong>完全保留</strong>，1代表<strong>完全丢弃</strong>。</li>
+<li>确定单元状态需要保留的新信息。首先，sigmoid层的输入们决定哪些值将被更新。其次，tanh层生成一个可以添加到状态的新候选值C的向量</li>
+<li>将旧的单元状态C(t-1)更新为新的单元状态C(t)</li>
+<li>决定输出，对状态值进行过滤或修改的值。首先，经过sigmoid层来确定我们要输出状态的哪些部分。接下来，通过tanh将单元状态推到1到-1之间，并将其乘以sigmoid门的输出，这样只输出确定想要的部分。<br><img src="/2020/02/18/RNN和RSTM/4.PNG" alt=""> </li>
+</ol>
+<h1 id="Tensorflow实现简单的LSTM"><a href="#Tensorflow实现简单的LSTM" class="headerlink" title="Tensorflow实现简单的LSTM"></a>Tensorflow实现简单的LSTM</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">from</span> tensorflow.examples.tutorials.mnist <span class="keyword">import</span> input_data</span><br><span class="line"><span class="comment">#嵌入数据集</span></span><br><span class="line">mnist = input_data.read_data_sets(<span class="string">"MNIST_data/"</span>, one_hot=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#输入图片是28*28</span></span><br><span class="line">n_input = <span class="number">28</span> <span class="comment">#输入一行，一行有28个数据</span></span><br><span class="line">max_time = <span class="number">28</span> <span class="comment">#一共28行</span></span><br><span class="line">lstm_size = <span class="number">100</span> <span class="comment">#隐藏层单元</span></span><br><span class="line">n_classes = <span class="number">10</span> <span class="comment">#分10个类</span></span><br><span class="line">batch_size = <span class="number">50</span> <span class="comment">#每批次50个样本</span></span><br><span class="line">n_batch = mnist.train.num_examples // batch_size  <span class="comment">#计算一共有多少个批次</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#这里的none表示第一个维度可以是任意的长度</span></span><br><span class="line">x = tf.placeholder(tf.float32, [<span class="keyword">None</span>,<span class="number">784</span>])</span><br><span class="line"><span class="comment">#正确的标签</span></span><br><span class="line">y = tf.placeholder(tf.float32, [<span class="keyword">None</span>,<span class="number">10</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">#初始化权值</span></span><br><span class="line">weights = tf.Variable(tf.truncated_normal([lstm_size,n_classes],stddev=<span class="number">0.1</span>))</span><br><span class="line"><span class="comment">#初始化偏置量</span></span><br><span class="line">biases = tf.Variable(tf.constant(<span class="number">0.1</span>,shape=[n_classes]))</span><br><span class="line"></span><br><span class="line"><span class="comment">#定义RNN网络</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">RNN</span><span class="params">(X,weights,biases)</span>:</span></span><br><span class="line">    <span class="comment">#inputs=[batch,size,max_time,n_input]</span></span><br><span class="line">    inputs = tf.reshape(X,[<span class="number">-1</span>,max_time,n_input])</span><br><span class="line">    <span class="comment">#定义LSTM基本CELL</span></span><br><span class="line">    lstm_cell = tf.contrib.rnn.core_rnn_cell.BasicLSTMCell(lstm_size)</span><br><span class="line">    <span class="comment">#final_state[0]是cell state</span></span><br><span class="line">    <span class="comment">#final_state[1]是hidden_state</span></span><br><span class="line">    outputs,final_state = tf.nn.dynamic_rnn(lstm_cell,inputs,dtype=tf.float32)</span><br><span class="line">    results = tf.nn.softmax(tf.matmul(final_state[<span class="number">1</span>], weights) + biases)</span><br><span class="line">    <span class="keyword">return</span> results</span><br><span class="line"></span><br><span class="line"><span class="comment">#计算RNN的返回结果</span></span><br><span class="line">prediction = RNN(x, weights, biases)</span><br><span class="line"><span class="comment">#损失函数</span></span><br><span class="line">cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=prediction,labels=y))</span><br><span class="line"><span class="comment">#使用AdamOptimizer进行优化</span></span><br><span class="line">train_step = tf.train.AdamOptimizer(<span class="number">1e-4</span>).minimize(cross_entropy)</span><br><span class="line"><span class="comment">#结果存放在一个布尔型列表中</span></span><br><span class="line">correct_prediction = tf.equal(tf.argmax(y,<span class="number">1</span>),tf.argmax(prediction,<span class="number">1</span>)) <span class="comment">#argmax返回一维张量中最大值所在的位置</span></span><br><span class="line"><span class="comment">#求准确率</span></span><br><span class="line">accuracy = tf.reduce_mean(tf.cast(correct_prediction,tf.float32))  <span class="comment">#把correct_prediction变为float32</span></span><br><span class="line"><span class="comment">#初始化</span></span><br><span class="line">init = tf.global_variables_initializer()</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">    sess.run(init)</span><br><span class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> range(<span class="number">6</span>):</span><br><span class="line">        <span class="keyword">for</span> batch <span class="keyword">in</span> range(n_batch):</span><br><span class="line">            batch_xs,batch_ys = mnist.train.next_batch(batch_size)</span><br><span class="line">            sess.run(train_step,feed_dict=&#123;x:batch_xs, y:batch_ys&#125;)</span><br><span class="line">            </span><br><span class="line">        acc = sess.run(accuracy,feed_dict=&#123;x:mnist.test.images,y:mnist.test.labels&#125;)</span><br><span class="line">        print(<span class="string">"Iter"</span>+str(epoch)+<span class="string">",Testing Accuracy= "</span>+ str(acc))</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>谢谢你请我吃糖果</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="wangyibo 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="wangyibo 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    wangyibo
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://wangyibo.top/2020/02/18/RNN和RSTM/" title="RNN和RSTM">http://wangyibo.top/2020/02/18/RNN和RSTM/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
+          
+            <a href="/tags/递归神经网络/" rel="tag"># 递归神经网络</a>
+          
+            <a href="/tags/长短期记忆网络/" rel="tag"># 长短期记忆网络</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/17/卷积神经网络及Tensorflow实现/" rel="next" title="卷积神经网络及Tensorflow实现">
+                <i class="fa fa-chevron-left"></i> 卷积神经网络及Tensorflow实现
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/01/Java并发/" rel="prev" title="Java并发">
+                Java并发 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/assets/img/me.jpg"
+                alt="wangyibo" />
+            
+              <p class="site-author-name" itemprop="name">wangyibo</p>
+              <p class="site-description motion-element" itemprop="description">hello world</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ahahou" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:770257398@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#递归神经网络"><span class="nav-number">1.</span> <span class="nav-text">递归神经网络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#长短期记忆网络"><span class="nav-number">2.</span> <span class="nav-text">长短期记忆网络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tensorflow实现简单的LSTM"><span class="nav-number">3.</span> <span class="nav-text">Tensorflow实现简单的LSTM</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wangyibo</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">36.4k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":200,"height":600,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"tagMode":false});</script></body>
+</html>
