@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/leimu.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/leimu.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/leimu.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="TCP,HTTP," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="从零开始" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="TCP协议的三次握手和四次挥手三次握手">
+<meta name="keywords" content="TCP,HTTP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TCP与HTTP">
+<meta property="og:url" content="http://wangyibo.top/2020/03/08/TCP与HTTP/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="TCP协议的三次握手和四次挥手三次握手">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://wangyibo.top/2020/03/08/TCP与HTTP/1.png">
+<meta property="og:image" content="http://wangyibo.top/2020/03/08/TCP与HTTP/2.png">
+<meta property="og:image" content="http://wangyibo.top/2020/03/08/TCP与HTTP/3.png">
+<meta property="og:image" content="http://wangyibo.top/2020/03/08/TCP与HTTP/4.png">
+<meta property="og:updated_time" content="2020-03-08T11:38:15.207Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TCP与HTTP">
+<meta name="twitter:description" content="TCP协议的三次握手和四次挥手三次握手">
+<meta name="twitter:image" content="http://wangyibo.top/2020/03/08/TCP与HTTP/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wangyibo.top/2020/03/08/TCP与HTTP/"/>
+
+
+
+
+
+  <title>TCP与HTTP | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">叶子( •̀ ω •́ )y</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangyibo.top/2020/03/08/TCP与HTTP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangyibo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/img/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">TCP与HTTP</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-08T18:02:48+08:00">
+                2020-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/计算机网络/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,572 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9	分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="TCP协议的三次握手和四次挥手"><a href="#TCP协议的三次握手和四次挥手" class="headerlink" title="TCP协议的三次握手和四次挥手"></a>TCP协议的三次握手和四次挥手</h1><h2 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h2><p><img src="/2020/03/08/TCP与HTTP/1.png" alt=""><br><a id="more"></a></p>
+<ol>
+<li>A的TCP向B发出连接请求报文段，其首部中的同步位<strong>SYN=1</strong>，并选择序号seq= x，表明传送数据时的第一个数据字节的序号是x。</li>
+<li>B的TCP收到连接请求报文段后，如同意，则发回确认。B在确认报文段中应使<strong>SYN=1</strong>，使<strong>ACK=1</strong>，其确认号ack=x+1，自己选择的序号seq=y。</li>
+<li>A收到此报文段后向B给出确认，其<strong>ACK=1</strong>，确认号ack=y+1。<br>A的TCP通知上层应用进程，连接已经建立。 </li>
+</ol>
+<p>为什么采用三次握手：<br>三次握手最主要的目的就是双方确认自己与对方的发送与接收都是正常的。建立可靠的通信。<strong>防止已经失效的连接请求报文突然又传送到了B</strong>。</p>
+<h2 id="四次挥手"><a href="#四次挥手" class="headerlink" title="四次挥手"></a>四次挥手</h2><p><img src="/2020/03/08/TCP与HTTP/2.png" alt=""></p>
+<ol>
+<li>数据传输结束后，通信的<strong>双方都可释放连接</strong>。现在A的应用进程先向其TCP发出连接释放报文段，并停止再发送数据，主动关闭TCP连接。A把连接释放报文段首部的<strong>FIN=1</strong>，其序号seq=u，等待B的确认。</li>
+<li>B发出确认<strong>ACK=1</strong>，确认号ack=u+1，而这个报文段自己的序号seq=v。TCP服务器进程通知高层应用进程。从A到B这个方向的连接就释放了，TCP连接处于<strong>半关闭状态</strong>。B若发送数据，A仍要接收。</li>
+<li>若B已经没有要向A发送的数据，<strong>ACK=1</strong>,<strong>FIN=1</strong>其应用进程就通知TCP释放连接。 </li>
+<li>收到连接释放报文段后，必须发出确认,在确认报文段中<strong>ACK=1</strong>，确认号ack=w+1，自己的序号seq=u+1。  </li>
+<li>TCP 连接必须经过时间 2MSL 后才真正释放掉。 </li>
+</ol>
+<p><strong>MSL</strong>是Maximum Segment Lifetime英文的缩写，中文可以译为“报文最大生存时间”，他是任何报文在网络上存活的最长时间，超过这个时间报文将被丢弃。而2MSL的意思就是2倍的MSL的意思。  </p>
+<p><strong>为什么要等待2MSL后才真正释放？</strong>  </p>
+<ul>
+<li>为了保证A发送的最后一个ACK报文段能够到达B。 </li>
+<li>防止 “已失效的连接请求报文段”出现在本连接中。A 在发送完最后一个ACK报文段后，再经过时间2MSL，就可以使本连接持续的时间内所产生的所有报文段，都从网络中消失。这样就可以使下一个新的连接中不会出现这种旧的连接请求报文段。</li>
+</ul>
+<h2 id="TCP与UDP的区别"><a href="#TCP与UDP的区别" class="headerlink" title="TCP与UDP的区别"></a>TCP与UDP的区别</h2><blockquote>
+<p>UDP是面向报文的，在传送数据之前不需要先建立连接，远地主机在收到UDP报文后，不需要给出任何确认。支持一对一，一对多和多对多的通信。并且没有拥塞控制。 TCP提供面向连接的服务。在传送数据之前必须先建立连接，数据传送结束后要释放连接。连接只能是1对1的。提供全双工通信。</p>
+</blockquote>
+<h2 id="TCP的可靠性"><a href="#TCP的可靠性" class="headerlink" title="TCP的可靠性"></a>TCP的可靠性</h2><p>TCP的可靠体现在TCP在传递数据之前，会有三次握手来建立连接，而且在数据传递时，有确认机制，重传机制（停止等待协议，连续ARQ协议），拥塞控制机制等，在数据传完后，还会断开连接用来节约系统资源。  </p>
+<ul>
+<li>应用数据被分割成 TCP 认为最适合发送的数据块。</li>
+<li>TCP 给发送的每一个包进行编号，接收方对数据包进行排序，把有序数据传送给应用层。</li>
+<li><strong>校验和</strong>： TCP 将保持它首部和数据的检验和。这是一个端到端的检验和，目的是检测数据在传输过程中的任何变化。如果收到段的检验和有差错，TCP 将丢弃这个报文段和不确认收到此报文段。</li>
+<li><strong>TCP 的接收端会丢弃重复的数据。</strong></li>
+<li><strong>流量控制</strong>： TCP 连接的每一方都有固定大小的缓冲空间，TCP的接收端只允许发送端发送接收端缓冲区能接纳的数据。当接收方来不及处理发送方的数据，能提示发送方降低发送的速率，防止包丢失。TCP 使用的流量控制协议是可变大小的滑动窗口协议。 （TCP 利用<strong>滑动窗口</strong>实现流量控制）</li>
+<li><strong>拥塞控制</strong>： 当网络拥塞时，减少数据的发送。<strong>慢开始、拥塞避免、快重传和快恢复</strong></li>
+<li><strong>停止等待协议</strong>： 也是为了实现可靠传输的，它的基本原理就是每发完一个分组就停止发送，<strong>等待对方确认</strong>。在收到确认后再发下一个分组。</li>
+<li><strong>超时重传</strong>： 当 TCP 发出一个段后，它启动一个<strong>定时器</strong>，等待目的端确认收到这个报文段。如果不能及时收到一个确认，将重发这个报文段。</li>
+</ul>
+<h1 id="域名系统DNS"><a href="#域名系统DNS" class="headerlink" title="域名系统DNS"></a>域名系统DNS</h1><p>许多应用层软件经常直接使用域名系统 DNS (Domain Name System)，但计算机的用户只是<strong>间接</strong>而不是直接使用域名系统。<br>名字到 IP 地址的解析是由若干个域名服务器程序完成的。域名服务器程序在专设的结点上运行，运行该程序的机器称为<strong>域名服务器</strong>。<br>主机向本地域名服务器的查询一般都是采用<strong>递归查询</strong>，本地域名服务器向根域名服务器的查询通常是采用<strong>迭代查询</strong>。  </p>
+<h2 id="从输入URL到页面加载发生了什么"><a href="#从输入URL到页面加载发生了什么" class="headerlink" title="从输入URL到页面加载发生了什么"></a>从输入URL到页面加载发生了什么</h2><ol>
+<li>DNS解析</li>
+<li>TCP连接</li>
+<li>发送HTTP请求</li>
+<li>服务器处理请求并返回HTTP报文</li>
+<li>浏览器解析渲染页面</li>
+<li>连接结束</li>
+</ol>
+<h1 id="超文本传送协议HTTP"><a href="#超文本传送协议HTTP" class="headerlink" title="超文本传送协议HTTP"></a>超文本传送协议HTTP</h1><ul>
+<li>为了使超文本的链接能够高效率地完成，需要用 HTTP 协议来传送一切必须的信息。</li>
+<li>从层次的角度看，HTTP 是<strong>面向事务</strong>的应用层协议，它是万维网上能够可靠地交换文件（包括文本、声音、图像等各种多媒体文件）的重要基础。<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2></li>
+<li>HTTP 是面向事务的客户服务器协议。</li>
+<li>HTTP 1.0 协议是无状态的(stateless)。也就是说，同一个客户第二次访问同一个服务器上的页面时，服务器的响应与第一次被访问时的相同，正是如此简化了服务器的设计，使服务器更容易支持大量并发的HTTP请求。</li>
+<li>HTTP 使用了面向连接的 TCP 向上提供的服务，保证了数据的可靠传输。但 HTTP 协议本身是<strong>无连接（短连接）的。</strong><h2 id="持续连接（长连接）"><a href="#持续连接（长连接）" class="headerlink" title="持续连接（长连接）"></a>持续连接（长连接）</h2>HTTP/1.1 协议使用<strong>持续连接</strong>。<br>万维网服务器在发送响应后仍然在一段时间内保持这条连接，使同一个客户（浏览器）和该服务器可以继续在这条连接上传送后续的 HTTP 请求报文和响应报文。<br>这并不局限于传送同一个页面上链接的文档，而是只要这些文档都在同一个服务器上就行。<br>目前一些流行的浏览器（例如，IE 6.0）的默认设置就是使用 HTTP/1.1。</li>
+</ul>
+<p><strong>持续连接的两种工作方式</strong></p>
+<ul>
+<li>非流水线方式：客户在收到前一个响应后才能发出下一个请求。这比非持续连接的两倍RTT的开销节省了建立TCP连接所需的一个RTT时间。但服务器在发送完一个对象后，其 TCP连接就处于空闲状态，浪费了服务器资源。</li>
+<li>流水线方式：客户在收到HTTP的响应报文之前就能够接着发送新的请求报文。一个接一个的请求报文到达服务器后，服务器就可连续发回响应报文。使用流水线方式时，客户访问所有的对象只需花费一个RTT时间，使TCP连接中的空闲时间减少，提高了下载文档效率。</li>
+</ul>
+<p><strong>HTTP协议的长连接和短连接，实质上是TCP协议的长连接和短连接。</strong></p>
+<h2 id="HTTP报文结构"><a href="#HTTP报文结构" class="headerlink" title="HTTP报文结构"></a>HTTP报文结构</h2><p>HTTP 有两类报文：</p>
+<ul>
+<li><strong>请求报文</strong>——从客户向服务器发送请求报文。</li>
+<li><strong>响应报文</strong>——从服务器到客户的回答。</li>
+</ul>
+<p>由于 HTTP 是面向正文的(text-oriented)，因此在报文中的每一个字段都是一些 ASCII 码串，因而每个字段的长度都是不确定的。  </p>
+<p><strong><em>请求报文</em></strong><br><img src="/2020/03/08/TCP与HTTP/3.png" alt=""><br><strong><em>响应报文</em></strong><br><img src="/2020/03/08/TCP与HTTP/4.png" alt=""> </p>
+<p><strong>开始行</strong>，用于区分是请求报文还是相应报文。在请求报文中开始行就是<strong>请求行</strong>。响应报文中叫做<strong>状态行</strong>。<br><strong>首部行</strong>，用来说明浏览器、服务器或报文主体的一些信息。首部可以有好几行但也可以不使用。<br><strong>实体主体</strong>，在请求报文中一般不用，而在响应报文中也可以不用  </p>
+<h3 id="HTTP请求报文的方法："><a href="#HTTP请求报文的方法：" class="headerlink" title="HTTP请求报文的方法："></a>HTTP请求报文的方法：</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法（操作）</th>
+<th style="text-align:center">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OPTION</td>
+<td style="text-align:center">请求一些选项的信息</td>
+</tr>
+<tr>
+<td>GET</td>
+<td style="text-align:center">请求读取由 URL所标志的信息</td>
+</tr>
+<tr>
+<td>HEAD</td>
+<td style="text-align:center">请求读取由 URL所标志的信息的首部</td>
+</tr>
+<tr>
+<td>POST</td>
+<td style="text-align:center">给服务器添加信息（例如，注释）</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td style="text-align:center">在指明的 URL下存储一个文档</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td style="text-align:center">删除指明的 URL所标志的资源</td>
+</tr>
+<tr>
+<td>TRACE</td>
+<td style="text-align:center">用来进行环回测试的请求报文</td>
+</tr>
+<tr>
+<td>CONNECT</td>
+<td style="text-align:center">用于代理服务器</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>状态码</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1xx</td>
+<td style="text-align:center">表示通知信息的，如请求收到了或正在进行处理。</td>
+</tr>
+<tr>
+<td>2xx</td>
+<td style="text-align:center">表示成功，如接受或知道了。</td>
+</tr>
+<tr>
+<td>3xx</td>
+<td style="text-align:center">表示重定向，表示要完成请求还必须采取进一步的行动。</td>
+</tr>
+<tr>
+<td>4xx</td>
+<td style="text-align:center">表示客户的差错，如请求中有错误的语法或不能完成。</td>
+</tr>
+<tr>
+<td>5xx</td>
+<td style="text-align:center">表示服务器的差错，如服务器失效无法完成请求。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="HTTPS协议"><a href="#HTTPS协议" class="headerlink" title="HTTPS协议"></a>HTTPS协议</h2><p>HTTPS协议 <strong>是对http报文内容加密的协议</strong><br>在HTTP报文进入TCP报文之前，先使用SSL对HTTP报文进行加密。从网络的层级结构看它位于HTTP协议与TCP协议之间。  </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>谢谢你请我吃糖果</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="wangyibo 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="wangyibo 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    wangyibo
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://wangyibo.top/2020/03/08/TCP与HTTP/" title="TCP与HTTP">http://wangyibo.top/2020/03/08/TCP与HTTP/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/TCP/" rel="tag"># TCP</a>
+          
+            <a href="/tags/HTTP/" rel="tag"># HTTP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/08/计算机网络体系结构/" rel="next" title="计算机网络体系结构">
+                <i class="fa fa-chevron-left"></i> 计算机网络体系结构
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/assets/img/me.jpg"
+                alt="wangyibo" />
+            
+              <p class="site-author-name" itemprop="name">wangyibo</p>
+              <p class="site-description motion-element" itemprop="description">hello world</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ahahou" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:770257398@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP协议的三次握手和四次挥手"><span class="nav-number">1.</span> <span class="nav-text">TCP协议的三次握手和四次挥手</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三次握手"><span class="nav-number">1.1.</span> <span class="nav-text">三次握手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四次挥手"><span class="nav-number">1.2.</span> <span class="nav-text">四次挥手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP与UDP的区别"><span class="nav-number">1.3.</span> <span class="nav-text">TCP与UDP的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP的可靠性"><span class="nav-number">1.4.</span> <span class="nav-text">TCP的可靠性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#域名系统DNS"><span class="nav-number">2.</span> <span class="nav-text">域名系统DNS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#从输入URL到页面加载发生了什么"><span class="nav-number">2.1.</span> <span class="nav-text">从输入URL到页面加载发生了什么</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#超文本传送协议HTTP"><span class="nav-number">3.</span> <span class="nav-text">超文本传送协议HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特点"><span class="nav-number">3.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#持续连接（长连接）"><span class="nav-number">3.2.</span> <span class="nav-text">持续连接（长连接）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP报文结构"><span class="nav-number">3.3.</span> <span class="nav-text">HTTP报文结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP请求报文的方法："><span class="nav-number">3.3.1.</span> <span class="nav-text">HTTP请求报文的方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP状态码"><span class="nav-number">3.3.2.</span> <span class="nav-text">HTTP状态码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS协议"><span class="nav-number">3.4.</span> <span class="nav-text">HTTPS协议</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wangyibo</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">44.3k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":200,"height":600,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"tagMode":false});</script></body>
+</html>
