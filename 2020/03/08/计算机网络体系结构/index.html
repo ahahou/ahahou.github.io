@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/leimu.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/leimu.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/leimu.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计算机网络体系结构," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="从零开始" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="计算机网络是将分布在不同地理位置的具有独立功能的计算机系统，利用通信设备和线路相互连接起来，在网络协议和网络软件的支持下，进行数据通信、实现资源共享的系统。主要网络模型：  OSI/RM开放系统参考模型（ISO模型） TCP/IP模型（互联网）  IEEE802模型（局域网）">
+<meta name="keywords" content="计算机网络体系结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络体系结构">
+<meta property="og:url" content="http://wangyibo.top/2020/03/08/计算机网络体系结构/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="计算机网络是将分布在不同地理位置的具有独立功能的计算机系统，利用通信设备和线路相互连接起来，在网络协议和网络软件的支持下，进行数据通信、实现资源共享的系统。主要网络模型：  OSI/RM开放系统参考模型（ISO模型） TCP/IP模型（互联网）  IEEE802模型（局域网）">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://wangyibo.top/2020/03/08/计算机网络体系结构/1.png">
+<meta property="og:image" content="http://wangyibo.top/2020/03/08/计算机网络体系结构/2.png">
+<meta property="og:image" content="http://wangyibo.top/2020/03/08/计算机网络体系结构/5.png">
+<meta property="og:image" content="http://wangyibo.top/2020/03/08/计算机网络体系结构/4.png">
+<meta property="og:image" content="http://wangyibo.top/2020/03/08/计算机网络体系结构/3.png">
+<meta property="og:image" content="http://wangyibo.top/2020/03/08/计算机网络体系结构/6.png">
+<meta property="og:image" content="http://wangyibo.top/2020/03/08/计算机网络体系结构/7.png">
+<meta property="og:image" content="http://wangyibo.top/2020/03/08/计算机网络体系结构/8.png">
+<meta property="og:image" content="http://wangyibo.top/2020/03/08/计算机网络体系结构/9.png">
+<meta property="og:image" content="http://wangyibo.top/2020/03/08/计算机网络体系结构/10.png">
+<meta property="og:image" content="http://wangyibo.top/2020/03/08/计算机网络体系结构/11.png">
+<meta property="og:image" content="http://wangyibo.top/2020/03/08/计算机网络体系结构/12.png">
+<meta property="og:image" content="http://wangyibo.top/2020/03/08/计算机网络体系结构/13.png">
+<meta property="og:image" content="http://wangyibo.top/2020/03/08/计算机网络体系结构/14.png">
+<meta property="og:image" content="http://wangyibo.top/2020/03/08/计算机网络体系结构/15.png">
+<meta property="og:updated_time" content="2020-03-08T09:57:13.577Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机网络体系结构">
+<meta name="twitter:description" content="计算机网络是将分布在不同地理位置的具有独立功能的计算机系统，利用通信设备和线路相互连接起来，在网络协议和网络软件的支持下，进行数据通信、实现资源共享的系统。主要网络模型：  OSI/RM开放系统参考模型（ISO模型） TCP/IP模型（互联网）  IEEE802模型（局域网）">
+<meta name="twitter:image" content="http://wangyibo.top/2020/03/08/计算机网络体系结构/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wangyibo.top/2020/03/08/计算机网络体系结构/"/>
+
+
+
+
+
+  <title>计算机网络体系结构 | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">叶子( •̀ ω •́ )y</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangyibo.top/2020/03/08/计算机网络体系结构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangyibo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/img/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算机网络体系结构</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-08T12:13:39+08:00">
+                2020-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/计算机网络/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5,177 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  18	分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>计算机网络</strong>是将分布在不同地理位置的具有独立功能的计算机系统，利用通信设备和线路相互连接起来，在网络协议和网络软件的支持下，进行数据通信、实现资源共享的系统。<br>主要网络模型：</p>
+<ul>
+<li>OSI/RM开放系统参考模型（ISO模型）</li>
+<li>TCP/IP模型（互联网） </li>
+<li>IEEE802模型（局域网）</li>
+</ul>
+<a id="more"></a>
+<h2 id="形成"><a href="#形成" class="headerlink" title="形成"></a>形成</h2><p>相互通信的两个计算机系统必须<strong>高度协调工作</strong>才行。<br><strong>分层</strong>可将庞大而复杂的问题，转化为若干较小的局部问题，而这些较小的局部问题就比较易于研究和处理。<br>1974年，美国IBM公司宣布了<strong>系统网络体系结构SNA</strong>(System Network Architecture)。不久后，其他一些公司也相继推出自己公司的具有不同名称的体系结构。<br><strong>国际标准化组织ISO</strong>于1977年成立了专门机构研究国际标准，提出<strong>OSI/RM</strong>。1983年形成正式文件，即ISO7498国际标准。<br>在市场化方面 OSI 却失败了。<br>法律上的(de jure)国际标准 OSI 并没有得到市场的认可，非国际标准 <strong>TCP/IP</strong>现在获得了最广泛的应用。  </p>
+<h2 id="OSI参考模型"><a href="#OSI参考模型" class="headerlink" title="OSI参考模型"></a>OSI参考模型</h2><p><img src="/2020/03/08/计算机网络体系结构/1.png" alt=""></p>
+<h3 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h3><ul>
+<li>利用<strong>传输介质</strong>为通信的网络结点之间建立、管理和释放物理连接；</li>
+<li>实现<strong>比特流的透明传输</strong>，为数据链路层提供数据传输服务；</li>
+<li>物理层的数据传输单元是<strong>比特</strong>。 <h3 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h3></li>
+<li>在物理层提供的服务基础上，数据链路层在通信的实体间建立数据链路连接；</li>
+<li>传输以<strong>帧</strong>为单位的数据包；</li>
+<li>采用<strong>差错控制</strong>与<strong>流量控制</strong>方法，使有差错的物理线路变成无差错的数据链路。 <h3 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h3></li>
+<li>通过<strong>路由选择算法</strong>为分组通过通信子网选择最适当的路径；</li>
+<li>为数据在结点之间传输创建<strong>逻辑链路</strong>；</li>
+<li>实现<strong>拥塞控制、网络互连</strong>等功能。<h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3></li>
+<li>向用户提供可靠<strong>端到端</strong>（end-to-end）服务；</li>
+<li>处理数据包错误、数据包次序，以及其他一些关于传输问题；</li>
+<li>传输层向高层<strong>屏蔽了下层数据通信的细节</strong>，是计算机通信体系结构中<strong>关键的一层</strong>。<h3 id="会话层"><a href="#会话层" class="headerlink" title="会话层"></a>会话层</h3></li>
+<li>负责维护两个结点之间的传输链接，以便确保点-点传输不中断；</li>
+<li>管理数据交换<h3 id="表示层"><a href="#表示层" class="headerlink" title="表示层"></a>表示层</h3></li>
+<li>用于处理在两个通信系统中- 交换信息的表示方式；</li>
+<li>数据格式变换；</li>
+<li>数据加密与解密；</li>
+<li>数据压缩与恢复。<h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3></li>
+<li>为应用程序提供了网络服务;</li>
+<li>应用层需要识别并保证通信对方的可用性，使得协同工作的应用程序之间的同步;</li>
+<li>建立传输错误纠正与保证数据完整性的控制机制。<h2 id="TCP-IP参考模型"><a href="#TCP-IP参考模型" class="headerlink" title="TCP/IP参考模型"></a>TCP/IP参考模型</h2><img src="/2020/03/08/计算机网络体系结构/2.png" alt=""><h3 id="运作方式"><a href="#运作方式" class="headerlink" title="运作方式"></a>运作方式</h3><img src="/2020/03/08/计算机网络体系结构/5.png" alt=""><h2 id="五层协议的体系结构"><a href="#五层协议的体系结构" class="headerlink" title="五层协议的体系结构"></a>五层协议的体系结构</h2></li>
+<li>OSI的七层协议体系结构的概念清楚，理论也较完整，但它既复杂又不实用。</li>
+<li>TCP/IP是四层的体系结构：应用层、运输层、网际层和网络接口层。</li>
+<li>但最下面的网络接口层并没有具体内容。 </li>
+<li>因此往往采取折中的办法，即综合OSI和TCP/IP的优点，采用一种只有五层协议的体系结构。<br><img src="/2020/03/08/计算机网络体系结构/4.png" alt=""><h3 id="运作方式-1"><a href="#运作方式-1" class="headerlink" title="运作方式"></a>运作方式</h3><img src="/2020/03/08/计算机网络体系结构/3.png" alt=""></li>
+</ul>
+<h3 id="物理层-1"><a href="#物理层-1" class="headerlink" title="物理层"></a>物理层</h3><p>物理层是OSI体系结构中的最低一层。它向上毗邻数据链路层，向下直接与传输介质相连接。它起着数据链路层和传输介质之间的逻辑接口作用。<br>物理层的主要任务描述为确定与传输媒体的接口有关的一些特性，即： </p>
+<ul>
+<li><strong>机械特性</strong>  指明接口所用接线器的形状和尺寸、引线数目和排列、固定和锁定装置等等。</li>
+<li><strong>电气特性</strong>  指明在接口电缆的各条线上出现的电压的范围。</li>
+<li><strong>功能特性</strong>  指明某条线上出现的某一电平的电压表示何种意义。</li>
+<li><strong>过程特性</strong>  指明对于不同功能的各种可能事件的出现顺序。 </li>
+</ul>
+<p><img src="/2020/03/08/计算机网络体系结构/6.png" alt=""><br>一个数据通信系统包括三大部分：<strong>源系统（或发送端、发送方）、传输系统（或传输网络）和目的系统（或接收端、接收方）</strong>。</p>
+<p><strong>信道</strong> 一般用来表示向某一个方向传送信息的媒体。<br><strong>通信方式</strong> 是指数据在信道上传输所采取的方式。<br>从通信的双方信息交互的方式来看，可以有以下三种：  </p>
+<ul>
+<li><strong>单向通信</strong>（单工通信）——只能有一个方向的通信而没有反方向的交互。</li>
+<li><strong>双向交替通信</strong>（半双工通信）——通信的双方都可以发送信息，但不能双方同时发送(当然也就不能同时接收)。</li>
+<li><strong>双向同时通信</strong>（全双工通信）——通信的双方可以同时发送和接收信息。 </li>
+</ul>
+<h3 id="数据链路层-1"><a href="#数据链路层-1" class="headerlink" title="数据链路层"></a>数据链路层</h3><p>数据链路层使用的信道主要有以下两种类型：  </p>
+<ul>
+<li><strong>点对点信道</strong> 这种信道使用<strong>一对一</strong>的点对点通信方式。</li>
+<li><strong>广播信道</strong> 这种信道使用<strong>一对多</strong>的广播通信方式，因此过程比较复杂。广播信道上连接的主机很多，因此必须使用专用的共享信道协议来协调这些主机的数据发送。  </li>
+</ul>
+<p><strong>链路(link)</strong>就是从一个结点到相邻结点的一段物理线路段，而中间没有任何其他的交换结点。</p>
+<ul>
+<li>一条链路只是一条通路的一个组成部分。<br><strong>数据链路(data link)</strong> 除了物理线路外，还必须有通信协议来控制这些数据的传输。若把实现这些协议的硬件和软件加到链路上，就构成了数据链路。</li>
+<li>现在最常用的方法是使用<strong>网络适配器（即网卡）</strong>来实现这些协议的硬件和软件。</li>
+<li>一般的<strong>适配器</strong>都包括了数据链路层和物理层这两层的功能</li>
+</ul>
+<h4 id="使用点对点信道的数据链路层"><a href="#使用点对点信道的数据链路层" class="headerlink" title="使用点对点信道的数据链路层"></a>使用点对点信道的数据链路层</h4><p><img src="/2020/03/08/计算机网络体系结构/7.png" alt=""></p>
+<p>数据链路层协议有许多种，但有三个基本问题则是共同的。<strong>封装成帧、透明传输和差错检测</strong>。  </p>
+<ul>
+<li>封装成帧<br>封装成帧(framing)就是在一段数据的前后分别添加首部和尾部，然后就构成了一个帧。确定帧的界限。<br>首部和尾部的一个重要作用就是进行<strong>帧定界</strong>。<br><img src="/2020/03/08/计算机网络体系结构/8.png" alt=""><br>帧定界可以使用特殊的帧定界符。控制字符SOH(Start  Of  Header)放在一帧的最前面，表示帧的首部开始。另一个控制字符EOT(End  Of  Transmission)表示帧的结束。  </li>
+<li>透明传输<br>透明传输是指不管所传数据是什么样的比特组合，都应当能够在链路上传送。<br>用字节填充法解决透明传输问题。  </li>
+<li><p>差错检测<br>在数据链路层传送的帧中，广泛使用了<strong>循环冗余检验CRC</strong>的检错技术。<br>在发送端，先把数据划分为组。假定每组 k 个比特。<br>假设待传送的一组数据 M =101001（现在k=6）。我们在M 的后面再添加供差错检测用的n位冗余码一起发送。    </p>
+</li>
+<li><p>PPP协议应满足的需求  </p>
+<ul>
+<li>简单——这是首要的要求</li>
+<li>封装成帧  必须规定特殊的字符作为帧定界符</li>
+<li>透明性  必须保证数据传输的透明性 </li>
+<li>多种网络层协议  在同一条物理链路上同时支持多种网络层协议</li>
+<li>多种类型链路 串行或并行、同步或异步、低速或高速、电或光、交换或非交换 </li>
+<li>差错检测  对接收端收到的帧进行检测，并立即丢弃有差错的帧 </li>
+<li>检测连接状态  能够及时自动检测出链路是否处于正常工作状态</li>
+<li>最大传送单元 </li>
+<li>网络层地址协商 通信的两个网络层能够知道或协商彼此的网络层地址 </li>
+<li>数据压缩协商  必须提供一种方法来协商使用数据压缩算法</li>
+</ul>
+</li>
+<li>PPP协议不需要的功能<ul>
+<li>纠错  PPP协议只进行检错，也就是说PPP协议是不可靠传输协议</li>
+<li>流量控制   端到端的流量控制由TCP负责，PPP协议不必重复</li>
+<li>序号   PPP不是可靠传输协议，因此不需要使用帧的序号 </li>
+<li>多点线路   PPP协议不支持多点线路，只支持点对点的链路通信 </li>
+<li>半双工或单工链路  PPP协议只支持全双工链路 </li>
+</ul>
+</li>
+<li>PPP协议的组成    <strong>PPP 协议由三个组成部分</strong><ul>
+<li>一个将IP数据报封装到串行链路的方法。IP数据报在PPP帧中就是其信息部分，其长度受最大传输单元MTU的限制。</li>
+<li>一个用来建立、配置和测试数据链路连接的链路控制协议 LCP(Link Control Protocol)。通信双方可协商一些选项。</li>
+<li>一套网络控制协议 NCP (Network Control Protocol)。其中的每一个协议支持不同的网络层协议<h4 id="使用广播信道的数据链路层"><a href="#使用广播信道的数据链路层" class="headerlink" title="使用广播信道的数据链路层"></a>使用广播信道的数据链路层</h4>局域网的数据链路层：</li>
+</ul>
+</li>
+<li>局域网最主要的特点是：网络为一个单位所拥有，且地理范围和站点数目均有限。 </li>
+<li>局域网具有如下的一些主要优点：<ul>
+<li>具有广播功能，从一个站点可很方便地访问全网。局域网上的主机可共享连接在局域网上的各种硬件和软件资源。 </li>
+<li>便于系统的扩展和逐渐地演变，各设备的位置可灵活调整和改变。</li>
+<li>提高了系统的可靠性、可用性和生存性。</li>
+</ul>
+</li>
+</ul>
+<p>以太网的两个标准    </p>
+<ul>
+<li>DIX Ethernet V2 是世界上第一个局域网产品（以太网）的规约。  </li>
+<li>IEEE 802委员会的802.3标准。  </li>
+<li>DIX Ethernet V2 标准与 IEEE 的 802.3 标准只有很小的差别，因此可以将 802.3 局域网简称为“以太网”。  </li>
+<li>严格说来，“以太网”应当是指符合 DIX Ethernet V2 标准的局域网    </li>
+</ul>
+<p>为了使数据链路层能更好地适应多种局域网标准，IEEE802委员会就将局域网的数据链路层拆成两个子层：  </p>
+<ul>
+<li>逻辑链路控制 LLC (Logical Link Control)子层</li>
+<li>媒体接入控制 MAC (Medium Access Control)子层。<br>与接入到传输媒体有关的内容都放在MAC子层，而LLC子层则与传输媒体无关，不管采用何种协议的局域网对LLC子层来说都是透明的 </li>
+</ul>
+<p>由于TCP/IP 体系经常使用的局域网是 DIX Ethernet V2 而不是802.3 标准中的几种局域网，因此现在802委员会制定的逻辑链路控制子层LLC（即 802.2 标准）的作用已经不大了。<br>很多厂商生产的适配器上就仅装有 MAC 协议而没有 LLC 协议。 </p>
+<ul>
+<li>网络接口板又称为通信适配器(adapter)或网络接口卡 NIC (Network Interface Card)，或“网卡”。   </li>
+<li>适配器的重要功能：<ul>
+<li>进行串行/并行转换。</li>
+<li>对数据进行缓存。</li>
+<li>在计算机的操作系统安装设备驱动程序。</li>
+<li>实现以太网协议。<br><img src="/2020/03/08/计算机网络体系结构/9.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<p>以太网提供的服务  </p>
+<ul>
+<li>以太网提供的服务是<strong>不可靠的交付</strong>，即尽<strong>最大努力的交付</strong>。</li>
+<li>当目的站收到有差错的数据帧时就<strong>丢弃此帧</strong>，其他什么也不做。差错的纠正由高层来决定。</li>
+<li>如果高层发现丢失了一些数据而进行重传，但以太网并不知道这是一个重传的帧，而是当作一个新的数据帧来发送。</li>
+</ul>
+<p><strong>CSMA/CD协议</strong>：<br>载波监听多点接入/碰撞检测CSMA/CD  </p>
+<ul>
+<li>使用 CSMA/CD 协议的以太网不能进行全双工通信而只能进行双向交替通信（半双工通信）。</li>
+<li>每个站在发送数据之后的一小段时间内，存在着遭遇碰撞的可能性。 </li>
+<li>这种发送的不确定性使整个以太网的平均通信量远小于以太网的最高数据率。  </li>
+</ul>
+<p>在局域网中，硬件地址又称为物理地址，或<strong>MAC地址</strong>。<br>“MAC地址”实际上就是适配器地址或适配器标识符EUI-48。  </p>
+<h4 id="网络层-1"><a href="#网络层-1" class="headerlink" title="网络层"></a>网络层</h4><p>网络层的主要任务是通过<strong>路由选择算法</strong>，为分组通过互联网络选择适当的路径。网络层要实现路由选择与网络互联等基本功能。网络层使用了数据链路层的服务，同时向运输层的端到端传输连接提供服务。  </p>
+<ul>
+<li>网络层向上只提供<strong>简单灵活的、无连接的、尽最大努力交付</strong>的数据报服务。</li>
+<li>网络在发送分组时不需要先建立连接。每一个分组（即 <strong>IP 数据报</strong>）独立发送，与其前后的分组无关（不进行编号）。</li>
+<li>网络层不提供服务质量的承诺。即所传送的分组可能出错、丢失、重复和失序（不按序到达终点），当然也不保证分组传送的时限。</li>
+</ul>
+<p><strong>网际协议IP</strong>是TCP/IP体系中两个最主要的协议之一，也是最重要的互联网标准协议之一。与IP协议配套使用的还有三个协议：  </p>
+<ul>
+<li>地址解析协议ARP(Address Resolution Protocol)</li>
+<li>网际控制报文协议ICMP(Internet Control Message Protocol)</li>
+<li>网际组管理协议IGMP(Internet Group Management Protocol)<br><img src="/2020/03/08/计算机网络体系结构/10.png" alt=""></li>
+</ul>
+<p>网络互相连接起来要使用一些中间设备。中间设备又称为中间系统或中继(relay)系统。根据中间设备所在的层次，可以有以下五种不同的中间设备。  </p>
+<ul>
+<li>物理层中继系统：转发器(repeater)。</li>
+<li>数据链路层中继系统：网桥或桥接器(bridge)。</li>
+<li>网络层中继系统：路由器(router)。</li>
+<li>网络层以上的中继系统：网关(gateway)。</li>
+<li>网桥和路由器的混合物：桥路器(brouter)。</li>
+</ul>
+<p>虚拟互联网络：  </p>
+<ul>
+<li>所谓<strong>虚拟互连网络</strong>也就是<strong>逻辑互连网络</strong>，它的意思就是互连起来的各种物理网络的异构性本来是客观存在的，但是我们利用IP协议就可以使这些性能各异的网络从用户看起来好像是一个统一的网络。</li>
+<li>使用IP协议的虚拟互连网络可简称为IP网。</li>
+<li>使用虚拟互连网络的好处是：当互联网上的主机进行通信时，就好像在一个网络上通信一样，而看不见互连的各具体的网络异构细节。</li>
+<li><strong>如果在这种覆盖全球的IP网的上层使用TCP协议，那么就是现在的互联网 (Internet)</strong>。   </li>
+</ul>
+<p>IP地址：<br>IP地址采用分层结构。标准分类的IP地址是由网络号netID与主机号hostID两部分组成。<br><img src="/2020/03/08/计算机网络体系结构/11.png" alt=""></p>
+<p>IP数据报<br>IP数据报分为首部和数据两部分。首部的前一部分是固定长度，共20字节，是所有IP数据包必须具有的（源地址，目的地址，总长度等重要地段都固定在首部）。一些长度可变的可选字段固定在首部的后面。因此首部最大值位60个字节。<br>IP首部中的生存时间给出了IP数据报在互联网中所能经过的最大路由器数。可防止IP数据报在互联网中无限制的兜圈子。<br><img src="/2020/03/08/计算机网络体系结构/12.png" alt=""></p>
+<h4 id="传输层-1"><a href="#传输层-1" class="headerlink" title="传输层"></a>传输层</h4><p>也被称为主机至主机层，主要负责<strong>主机到主机之间实体间端对到端通信，解决下层没有处理的通信问题</strong>。<br><img src="/2020/03/08/计算机网络体系结构/13.png" alt=""></p>
+<p>传输层的主要功能</p>
+<ul>
+<li>传输层为应用<strong>进程之间</strong>提供端到端的逻辑通信（但网络层是为主机之间提供逻辑通信）。</li>
+<li>传输层还要对收到的报文进行<strong>差错检测</strong>。</li>
+<li>传输层需要有两种不同的运输协议，即面向连接的 <strong>TCP</strong> 和无连接的 <strong>UDP</strong>。   </li>
+</ul>
+<p>TCP/IP 的传输层有两个不同的协议：<br>(1) <strong>用户数据报协议UDP(User Datagram Protocol)</strong><br>(2) <strong>传输控制协议TCP(Transmission Control Protocol)</strong> </p>
+<p>两个对等传输实体在通信时传送的数据单位叫作<strong>传输协议数据单元TPDU</strong>(Transport Protocol Data Unit)。</p>
+<ul>
+<li>TCP传送的数据单位协议是<strong>TCP报文段(segment)</strong></li>
+<li>UDP传送的数据单位协议是<strong>UDP报文或用户数据报</strong>。 </li>
+</ul>
+<p><img src="/2020/03/08/计算机网络体系结构/14.png" alt=""></p>
+<p>端口号(protocol port number)简称为端口(port)   </p>
+<ul>
+<li>熟知端口，数值一般为0-1023。</li>
+<li>登记端口号，数值为1024-49151，为没有熟知端口号的应用程序使用的。使用这个范围的端口号必须在IANA登记，以防止重复。  </li>
+<li>客户端口号或短暂端口号，数值为49152-65535，留给客户进程选择暂时使用。当服务器进程收到客户进程的报文时，就知道了客户进程所使用的动态端口号。通信结束后，这个端口号可供其他客户进程以后使用。 </li>
+</ul>
+<p><strong>UDP</strong>    </p>
+<ul>
+<li>UDP是<strong>无连接的</strong>，即发送数据之前不需要建立连接。</li>
+<li>UDP使用<strong>尽最大努力交付，即不保证可靠交付</strong>，因此主机不需要维持复杂的连接状态表。</li>
+<li>UDP是<strong>面向报文的</strong>。UDP没有拥塞控制，很适合多媒体通信的要求，即实时应用。</li>
+<li>UDP支持<strong>一对一、一对多、多对一和多对多</strong>的交互通信。</li>
+<li>UDP的首部开销小，只有8个字节，比TCP的20个字节的首部要短。</li>
+</ul>
+<p>用户数据报 UDP 有两个部分：数据部分和首部。首部有 8 个字节，由 4 个字段组成，每个字段都是两个字节。 </p>
+<p><strong>TCP</strong></p>
+<ul>
+<li>TCP是面向连接的传输层协议。</li>
+<li>每一条TCP连接只能有两个端点(endpoint)，每一条TCP连接只能是<strong>点对点的（一对一）</strong>。 </li>
+<li>TCP提供<strong>可靠交付的服务</strong>。也就是说，通过TCP连接传送的数据，无差错、不丢失、不重复、并且按序到达。</li>
+<li>TCP提供<strong>全双工通信</strong>。</li>
+<li><strong>面向字节流</strong>。虽然应用程序和TCP的交互是一次一个数据块(大小不等),但TCP把应用程序交下来的数据看成仅仅是一连串的无结构的字节流。  </li>
+</ul>
+<p><img src="/2020/03/08/计算机网络体系结构/15.png" alt=""></p>
+<p><strong>注意：</strong></p>
+<ul>
+<li>TCP根据对方给出的窗口值和当前网络拥塞的程度来决定一个报文段应包含多少个字节（UDP发送的报文长度是应用进程给出的）。</li>
+<li>TCP可把太长的数据块划分短一些再传送。TCP也可等待积累有足够多的字节后再构成报文段发送出去。 </li>
+<li>TCP连接的端点不是主机，不是主机的IP地址，不是应用进程，也不是传输层的协议端口。TCP连接的端点叫做<strong>套接字(socket)</strong>或<strong>插口</strong>  </li>
+<li><strong>端口号拼接到(contatenated with) IP地址</strong>即构成了套接字。因此套接字的表示方法是在点分十进制的IP地址后面写上端口号，中间用冒号或逗号隔开。</li>
+</ul>
+<p>TCP可靠通信的具体实现</p>
+<ul>
+<li>TCP连接的每一端都必须设有<strong>两个窗口</strong>——一个<strong>发送窗口</strong>和一个<strong>接收窗口</strong>。</li>
+<li>TCP的可靠传输机制用字节的序号进行控制。<strong>TCP所有的确认都是基于序号而不是基于报文段</strong>。</li>
+<li>TCP两端的四个窗口经常处于<strong>动态变化</strong>之中。</li>
+<li>TCP连接的往返时间RTT也<strong>不是固定不变</strong>的。需要使用特定的算法估算较为合理的重传时间。</li>
+</ul>
+<h2 id="应用层-1"><a href="#应用层-1" class="headerlink" title="应用层"></a>应用层</h2><p>在TCP/IP参考模型中，应用层是参考模型的最高层。应用层包括所有的高层协议，并且不断有新的协议加入。  </p>
+<p>主要的网络应用和应用协议</p>
+<ul>
+<li>远程登录协议（Telnet）用于实现互联网中远程登录功能  </li>
+<li>文件传输协议（FTP）用于实现Internet中交互式文件传输  </li>
+<li>简单邮件传输协议（SMTP）用于实现Internet中电子邮件传送  </li>
+<li>域名系统（DNS）用于实现网络设备名字到IP地址映射  </li>
+<li>简单网络管理协议（SNMP）用于还礼与监视网络设备  </li>
+<li>超文本传输协议（HTTP）用于WWW服务         </li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>谢谢你请我吃糖果</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="wangyibo 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="wangyibo 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    wangyibo
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://wangyibo.top/2020/03/08/计算机网络体系结构/" title="计算机网络体系结构">http://wangyibo.top/2020/03/08/计算机网络体系结构/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算机网络体系结构/" rel="tag"># 计算机网络体系结构</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/01/Java并发/" rel="next" title="Java并发">
+                <i class="fa fa-chevron-left"></i> Java并发
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/assets/img/me.jpg"
+                alt="wangyibo" />
+            
+              <p class="site-author-name" itemprop="name">wangyibo</p>
+              <p class="site-description motion-element" itemprop="description">hello world</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ahahou" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:770257398@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#形成"><span class="nav-number">1.</span> <span class="nav-text">形成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OSI参考模型"><span class="nav-number">2.</span> <span class="nav-text">OSI参考模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#物理层"><span class="nav-number">2.1.</span> <span class="nav-text">物理层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据链路层"><span class="nav-number">2.2.</span> <span class="nav-text">数据链路层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络层"><span class="nav-number">2.3.</span> <span class="nav-text">网络层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传输层"><span class="nav-number">2.4.</span> <span class="nav-text">传输层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#会话层"><span class="nav-number">2.5.</span> <span class="nav-text">会话层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表示层"><span class="nav-number">2.6.</span> <span class="nav-text">表示层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用层"><span class="nav-number">2.7.</span> <span class="nav-text">应用层</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP-IP参考模型"><span class="nav-number">3.</span> <span class="nav-text">TCP/IP参考模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#运作方式"><span class="nav-number">3.1.</span> <span class="nav-text">运作方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五层协议的体系结构"><span class="nav-number">4.</span> <span class="nav-text">五层协议的体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#运作方式-1"><span class="nav-number">4.1.</span> <span class="nav-text">运作方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#物理层-1"><span class="nav-number">4.2.</span> <span class="nav-text">物理层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据链路层-1"><span class="nav-number">4.3.</span> <span class="nav-text">数据链路层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用点对点信道的数据链路层"><span class="nav-number">4.3.1.</span> <span class="nav-text">使用点对点信道的数据链路层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用广播信道的数据链路层"><span class="nav-number">4.3.2.</span> <span class="nav-text">使用广播信道的数据链路层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络层-1"><span class="nav-number">4.3.3.</span> <span class="nav-text">网络层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#传输层-1"><span class="nav-number">4.3.4.</span> <span class="nav-text">传输层</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用层-1"><span class="nav-number">5.</span> <span class="nav-text">应用层</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wangyibo</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">41.7k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":200,"height":600,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"tagMode":false});</script></body>
+</html>
