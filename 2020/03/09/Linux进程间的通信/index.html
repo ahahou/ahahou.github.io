@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/leimu.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/leimu.jpg?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/leimu.jpg?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="linux,进程间通信," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="从零开始" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="Linux中所有的进程都是由父进程派生出来。每一个进程都有一个唯一的编号：PID。系统第一个进程init由内容开启，PID为1；以后的进程都由init或其子进程派生。用户进程都由shell进程派生。一些Linux间的通信方式：信号，管道，命名管道，消息队列，共享存储，信号量，套接字">
+<meta name="keywords" content="linux,进程间通信">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux进程间的通信">
+<meta property="og:url" content="http://wangyibo.top/2020/03/09/Linux进程间的通信/index.html">
+<meta property="og:site_name" content="从零开始">
+<meta property="og:description" content="Linux中所有的进程都是由父进程派生出来。每一个进程都有一个唯一的编号：PID。系统第一个进程init由内容开启，PID为1；以后的进程都由init或其子进程派生。用户进程都由shell进程派生。一些Linux间的通信方式：信号，管道，命名管道，消息队列，共享存储，信号量，套接字">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://wangyibo.top/2020/03/09/Linux进程间的通信/1.png">
+<meta property="og:updated_time" content="2020-03-09T13:07:43.616Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux进程间的通信">
+<meta name="twitter:description" content="Linux中所有的进程都是由父进程派生出来。每一个进程都有一个唯一的编号：PID。系统第一个进程init由内容开启，PID为1；以后的进程都由init或其子进程派生。用户进程都由shell进程派生。一些Linux间的通信方式：信号，管道，命名管道，消息队列，共享存储，信号量，套接字">
+<meta name="twitter:image" content="http://wangyibo.top/2020/03/09/Linux进程间的通信/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wangyibo.top/2020/03/09/Linux进程间的通信/"/>
+
+
+
+
+
+  <title>Linux进程间的通信 | 从零开始</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">从零开始</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">叶子( •̀ ω •́ )y</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wangyibo.top/2020/03/09/Linux进程间的通信/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangyibo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/img/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="从零开始">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux进程间的通信</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-09T16:26:05+08:00">
+                2020-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">笔记</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/笔记/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,669 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6	分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Linux中所有的进程都是由<strong>父进程</strong>派生出来。每一个进程都有一个唯一的编号：<strong>PID</strong>。<br>系统第一个进程init由内容开启，PID为1；以后的进程都由init或其子进程派生。<br>用户进程都由<strong>shell进程</strong>派生。<br>一些Linux间的通信方式：<strong>信号，管道，命名管道，消息队列，共享存储，信号量，套接字</strong><br><a id="more"></a></p>
+<ul>
+<li>按进程的产生方式分有<strong>三种进程</strong>:<ul>
+<li><strong>交互进程（Interactive）</strong>：用户在Shell中启动的进程，可以在前台或后台运行，与终端相关。</li>
+<li><strong>批处理进程（Batch）</strong>：由系统或用户安排，定时运行的进程，即：计划任务。一般在后台运行，与终端无关。</li>
+<li><strong>守护进程（Daemon）</strong>：即服务进程。</li>
+</ul>
+</li>
+<li>按进程的功能和运行程序分为：<ul>
+<li><strong>系统进程</strong>：只运行在内核模式，执行操作系统代码，完成管理型工作。</li>
+<li><strong>用户进程</strong>：通常运行在以后模式，在需要时通过系统调用、中断或异常进入内核模式。</li>
+</ul>
+</li>
+</ul>
+<p>进程通信：在用户空间实现进程通信是不可能的，通过Linux内核通信。<br>线程间通信：可以由用户空间实现线程通信。</p>
+<p>单机模式下的进程通信：  </p>
+<ul>
+<li>管道通信：<strong>无名管道、有名管道（文件系统中有名）</strong></li>
+<li>信号通信：信号（通知）通信包括：信号的<strong>发送</strong>、信号的<strong>接收</strong>、信号的<strong>处理</strong>。</li>
+<li>IPC（Inter-Process Communication）通信：<strong>共享内存、消息队列</strong>和<strong>信号灯</strong><br>非单机下的进程通信：  </li>
+<li><strong>Socket通信</strong>:存在于一个网络中两个进程之间的通信（<strong>两个Linux内核</strong>)。</li>
+</ul>
+<p>每一种通信方式都是<strong>基于文件IO的思想</strong>。</p>
+<ul>
+<li>open功能：创建或打开进程通信对象，函数形式不一样，有的是由多个函数完成。  </li>
+<li>write功能：向进程通信对象写入内容，函数形式可能不一样。  </li>
+<li>read功能：从进程同行对象中读取内容，函数形式可能不一样。  </li>
+<li>close功能：关闭或删除进程通信对象，函数形式可能不一样。</li>
+</ul>
+<h1 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h1><p>管道文件是一个特殊的文件，是由顺序队列（数组）来实现的。<br>半双工。<br>在文件IO中创建一个文件或打开一个文件是由open函数来实现的，他不能创建管道文件，只能用<strong>pipe函数</strong>来创建管道。<br>函数int pipe（int fd[2])<br>注意：</p>
+<ul>
+<li>管道是创建在内存中的，进程结束，空间释放，管道就不存在了。  </li>
+<li>管道中的东西，读完了就删除了；队列。 </li>
+<li>如果固定拿到中没有东西可读，则会读阻塞。  </li>
+<li>如果写入内容超过管道缓存，也会发生写阻塞。  </li>
+</ul>
+<p>无名管道的缺点：</p>
+<ul>
+<li>不能实现非父子进程之间的通信。  （因为fork实现了父进程一些内容的拷贝到子进程中）   </li>
+</ul>
+<h1 id="有名管道"><a href="#有名管道" class="headerlink" title="有名管道"></a>有名管道</h1><p>管道文件——-‘<strong>p</strong>‘<br>管道文件<strong>只有inode号，不占磁盘块空间</strong>，和套接字，字符设备文件，块设备文件一样，普通文件和符号链接文件及目录文件，不仅有inode号，还占磁盘块空间。<br>半双工通信。<br>函数：int mkfifo(const char <em>filename, mode_t mode)<br>mkfifo 用来创建管道文件的节点（open不能创建管道文件），<strong>没有在内核中创建管道</strong>，只有通过<strong>open函数打开</strong>这个文件时才会在内核空间创建管道。<br><em>*允许无亲缘关系进程间的通信</em></em>。  </p>
+<h1 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h1><p>Linux内核可以发送64种信号。  可以通过kill -l查看。<br>如使用的kill 9 PID 就是对对应PID进行杀死操作，即通过内核发送的9号信号给对应的PID。</p>
+<h2 id="信号的发送"><a href="#信号的发送" class="headerlink" title="信号的发送"></a>信号的发送</h2><p>函数 int Kill(pid_t pid, int sig)<br>函数 int raise(int sig)  发信号给自己。<br>函数 unsigned int alarm(unsigned int seconds)  只会发一种信号，即闹钟信号。会让内核定时一段时间后发送信号，raise会让内核立即发信号。  </p>
+<h2 id="信号的接收"><a href="#信号的接收" class="headerlink" title="信号的接收"></a>信号的接收</h2><p>函数 int pause()<br>函数 sleep<br>函数 while(1)  </p>
+<h2 id="信号的处理"><a href="#信号的处理" class="headerlink" title="信号的处理"></a>信号的处理</h2><p>函数 void (*signal(int signum,void(*handler)(int))) (int)   </p>
+<h1 id="IPC通信"><a href="#IPC通信" class="headerlink" title="IPC通信"></a>IPC通信</h1><p><img src="/2020/03/09/Linux进程间的通信/1.png" alt=""></p>
+<h1 id="共享内存"><a href="#共享内存" class="headerlink" title="共享内存"></a>共享内存</h1><p>共享内存就是映射一段能被其他进程所访问的<strong>内存</strong>,这段共享内存由<strong>一个进程创建</strong>,但<strong>多个进程</strong>都可以访问.共享内存是最快的IPC(进程间通信)方式,它是针对其它进程间通信方式运行效率低而专门设计的.它往往与其他通信机制,如信号量,配合使用,来实现进程间的同步与通信。<br>函数：int shmget(key_t key, int size, int shmflg)<br>为了方便用户空间对共享内存的操作，使用地址映射的方式。  </p>
+<p>共享内存的特点：  </p>
+<ul>
+<li>共享内存创建之后，一直存在与内核中，知道被删除或系统关闭。 </li>
+<li>共享内存和管道不一样，读取后，内容仍在其共享内存中。 </li>
+</ul>
+<h1 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h1><p><strong>链式队列。</strong><br>格式化的数据流以消息队列形式发送给任意进程。对消息队列具有操作权限的进程都可以使用<strong>msget</strong>完成对消息队列的操作控制.通过使用消息类型,进程可以<strong>按任何顺序读信息</strong>,或为消息安排优先级顺序。<br>函数：int msgget(key_t key, in flag)</p>
+<p>特点：  </p>
+<ul>
+<li>数据读取后，消息队列中的数据就不在了。 </li>
+<li>可以一个消息队列实现同时收发的任务，即一个消息队列可以实现全双工。  </li>
+</ul>
+<h1 id="信号量（灯）"><a href="#信号量（灯）" class="headerlink" title="信号量（灯）"></a>信号量（灯）</h1><p>信号灯在内核中以集合形式存在。<br>信号量是一个<strong>计数器</strong>,可以用来控制多个线程对<strong>共享资源的访问</strong>。它不是用于交换大批数据,而用于<strong>多线程之间的同步</strong>.它常作为一种<strong>锁机制</strong>,防止某进程在访问资源时其它进程也访问该资源.因此,主要作为进程间以及同一个进程内不同线程之间的同步手段。<br>用来对成组的信号量值进行操作。<br>函数： int semget(key_t key,int nsems, int semglg)</p>
+<h1 id="套接字"><a href="#套接字" class="headerlink" title="套接字"></a>套接字</h1><p>借这种机制，客户/服务器（即要进行通信的进程）系统的开发工作既可以在<strong>本地单机</strong>上进行，也可以<strong>跨网络进行</strong>。也就是说它可以让不在同一台计算机但通过网络连接计算机上的进程进行通信。也因为这样，套接字明确地将客户端和服务器区分开来。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>谢谢你请我吃糖果</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="wangyibo 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="wangyibo 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    wangyibo
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://wangyibo.top/2020/03/09/Linux进程间的通信/" title="Linux进程间的通信">http://wangyibo.top/2020/03/09/Linux进程间的通信/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/tags/进程间通信/" rel="tag"># 进程间通信</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/08/TCP与HTTP/" rel="next" title="TCP与HTTP">
+                <i class="fa fa-chevron-left"></i> TCP与HTTP
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/assets/img/me.jpg"
+                alt="wangyibo" />
+            
+              <p class="site-author-name" itemprop="name">wangyibo</p>
+              <p class="site-description motion-element" itemprop="description">hello world</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ahahou" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:770257398@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#管道"><span class="nav-number">1.</span> <span class="nav-text">管道</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#有名管道"><span class="nav-number">2.</span> <span class="nav-text">有名管道</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#信号"><span class="nav-number">3.</span> <span class="nav-text">信号</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#信号的发送"><span class="nav-number">3.1.</span> <span class="nav-text">信号的发送</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信号的接收"><span class="nav-number">3.2.</span> <span class="nav-text">信号的接收</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#信号的处理"><span class="nav-number">3.3.</span> <span class="nav-text">信号的处理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IPC通信"><span class="nav-number">4.</span> <span class="nav-text">IPC通信</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#共享内存"><span class="nav-number">5.</span> <span class="nav-text">共享内存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#消息队列"><span class="nav-number">6.</span> <span class="nav-text">消息队列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#信号量（灯）"><span class="nav-number">7.</span> <span class="nav-text">信号量（灯）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#套接字"><span class="nav-number">8.</span> <span class="nav-text">套接字</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wangyibo</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">46.0k</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"superSample":2,"width":200,"height":600,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false,"tagMode":false});</script></body>
+</html>
